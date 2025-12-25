@@ -55,10 +55,10 @@ const services = [
 ];
 
 const stats = [
-  { value: "50+", label: "Projects Delivered" },
-  { value: "30+", label: "Happy Clients" },
-  { value: "100+", label: "Students Trained" },
-  { value: "8+", label: "Tech Domains" },
+  { value: "10+", label: "Projects Delivered" },
+  { value: "50+", label: "Happy Clients" },
+  { value: "2000+", label: "Students Trained" },
+  { value: "16+", label: "Tech Domains" },
 ];
 
 const features = [
