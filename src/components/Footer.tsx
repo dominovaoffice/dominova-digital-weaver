@@ -68,7 +68,7 @@ export function Footer() {
               ))}
               <li>
                 <a
-                  href="https://drive.google.com/file/d/16iXxD80p56zbbVEVAFQi6QxkYWF1Wvo_/view?usp=sharing"
+                  href="https://dominova-portfolio-showcase.lovable.app"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-1"
