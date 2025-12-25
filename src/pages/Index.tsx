@@ -125,7 +125,7 @@ export default function Index() {
                 </Button>
               </Link>
               <a
-                href="https://drive.google.com/file/d/16iXxD80p56zbbVEVAFQi6QxkYWF1Wvo_/view?usp=sharing"
+                href="https://dominova-portfolio-showcase.lovable.app"
                 target="_blank"
                 rel="noopener noreferrer"
               >
