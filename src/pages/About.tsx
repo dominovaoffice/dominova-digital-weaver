@@ -40,9 +40,9 @@ const values = [
 
 const milestones = [
   { icon: Building2, value: "2024", label: "Founded in Chennai" },
-  { icon: Users, value: "50+", label: "Projects Completed" },
-  { icon: GraduationCap, value: "100+", label: "Students Trained" },
-  { icon: Rocket, value: "8+", label: "Tech Domains" },
+  { icon: Users, value: "10+", label: "Projects Completed" },
+  { icon: GraduationCap, value: "2000+", label: "Students Trained" },
+  { icon: Rocket, value: "16+", label: "Tech Domains" },
 ];
 
 export default function About() {
