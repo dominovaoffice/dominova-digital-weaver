@@ -80,7 +80,7 @@ export default function Services() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4"
+              className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 border border-primary/20"
             >
               Our Services
             </motion.span>
@@ -90,7 +90,7 @@ export default function Services() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="font-display font-bold text-4xl lg:text-5xl text-foreground mb-6"
             >
-              Comprehensive IT Services for Your Business
+              Comprehensive <span className="text-gradient-gold">IT Services</span> for Your Business
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -121,7 +121,7 @@ export default function Services() {
                 }`}
               >
                 <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 border border-primary/20">
                     <service.icon className="w-7 h-7 text-primary" />
                   </div>
                   <h2 className="font-display font-bold text-2xl lg:text-3xl text-foreground mb-4">
@@ -147,7 +147,7 @@ export default function Services() {
                 </div>
 
                 <div className={`relative ${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                  <div className="relative rounded-2xl overflow-hidden bg-card border border-border aspect-[4/3]">
+                  <div className="relative rounded-2xl overflow-hidden bg-card border border-border aspect-[4/3] hover:border-primary/30 transition-colors">
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />
                     <div className="absolute inset-0 flex items-center justify-center">
                       <service.icon className="w-24 h-24 text-primary/30" />

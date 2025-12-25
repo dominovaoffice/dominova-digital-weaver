@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Instagram, Linkedin, Mail, MapPin } from "lucide-react";
+import { Instagram, Linkedin, Mail, MapPin, ExternalLink } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const footerLinks = {
   services: [
@@ -23,16 +24,13 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-display font-bold text-xl">D</span>
-              </div>
-              <span className="font-display font-bold text-xl text-foreground">Dominova</span>
+              <img src={logo} alt="Dominova" className="h-12 w-auto" />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed mb-4">
               Building scalable technology solutions for businesses and institutions across India.
             </p>
             <div className="flex items-center gap-2 text-muted-foreground text-sm">
-              <MapPin className="w-4 h-4" />
+              <MapPin className="w-4 h-4 text-primary" />
               <span>Chennai, Tamil Nadu, India</span>
             </div>
           </div>
@@ -68,6 +66,16 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <a
+                  href="https://drive.google.com/file/d/16iXxD80p56zbbVEVAFQi6QxkYWF1Wvo_/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-1"
+                >
+                  Portfolio <ExternalLink className="w-3 h-3" />
+                </a>
+              </li>
             </ul>
           </div>
 

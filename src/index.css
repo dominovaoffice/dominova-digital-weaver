@@ -6,64 +6,65 @@
 
 @layer base {
   :root {
-    /* Dark Corporate Tech Theme */
-    --background: 222 47% 6%;
-    --foreground: 210 40% 98%;
+    /* Black & Gold Luxury Theme */
+    --background: 0 0% 5%; /* #0E0E0E */
+    --foreground: 40 30% 95%;
 
-    --card: 222 47% 8%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 7%;
+    --card-foreground: 40 30% 95%;
 
-    --popover: 222 47% 8%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 7%;
+    --popover-foreground: 40 30% 95%;
 
-    --primary: 199 89% 48%;
-    --primary-foreground: 222 47% 6%;
+    --primary: 41 52% 54%; /* #C9A24D - Gold */
+    --primary-foreground: 0 0% 5%;
 
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 40 30% 95%;
 
-    --muted: 217 33% 14%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 40 10% 60%;
 
-    --accent: 199 89% 48%;
-    --accent-foreground: 222 47% 6%;
+    --accent: 41 52% 54%;
+    --accent-foreground: 0 0% 5%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 40 30% 95%;
 
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 199 89% 48%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 41 52% 54%;
 
     --radius: 0.75rem;
 
     /* Custom tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(199 89% 48%) 0%, hsl(210 100% 60%) 100%);
-    --gradient-hero: linear-gradient(180deg, hsl(222 47% 6%) 0%, hsl(222 47% 10%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(222 47% 10%) 0%, hsl(222 47% 8%) 100%);
-    --gradient-glow: radial-gradient(ellipse at center, hsl(199 89% 48% / 0.15) 0%, transparent 70%);
+    --gradient-primary: linear-gradient(135deg, hsl(41 52% 54%) 0%, hsl(41 65% 65%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(0 0% 5%) 0%, hsl(0 0% 8%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 10%) 0%, hsl(0 0% 7%) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsl(41 52% 54% / 0.12) 0%, transparent 70%);
+    --gradient-gold: linear-gradient(135deg, hsl(41 52% 48%) 0%, hsl(41 65% 60%) 50%, hsl(41 52% 48%) 100%);
     
-    --shadow-glow: 0 0 60px hsl(199 89% 48% / 0.2);
-    --shadow-card: 0 4px 24px hsl(222 47% 2% / 0.4);
-    --shadow-button: 0 4px 16px hsl(199 89% 48% / 0.3);
+    --shadow-glow: 0 0 60px hsl(41 52% 54% / 0.15);
+    --shadow-card: 0 4px 24px hsl(0 0% 0% / 0.5);
+    --shadow-button: 0 4px 16px hsl(41 52% 54% / 0.25);
 
     --font-display: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
 
     /* Sidebar */
-    --sidebar-background: 222 47% 8%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 199 89% 48%;
-    --sidebar-primary-foreground: 222 47% 6%;
-    --sidebar-accent: 217 33% 17%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 217 33% 17%;
-    --sidebar-ring: 199 89% 48%;
+    --sidebar-background: 0 0% 7%;
+    --sidebar-foreground: 40 30% 95%;
+    --sidebar-primary: 41 52% 54%;
+    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-accent: 0 0% 18%;
+    --sidebar-accent-foreground: 40 30% 95%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 41 52% 54%;
   }
 
   .dark {
-    --background: 222 47% 6%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 5%;
+    --foreground: 40 30% 95%;
   }
 }
 
@@ -100,12 +101,21 @@
     background-image: var(--gradient-primary);
   }
 
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-gold);
+  }
+
   .bg-gradient-hero {
     background-image: var(--gradient-hero);
   }
 
   .bg-gradient-glow {
     background-image: var(--gradient-glow);
+  }
+
+  .bg-gradient-gold {
+    background-image: var(--gradient-gold);
   }
 
   .shadow-glow {
@@ -131,6 +141,10 @@
   .animate-fade-up {
     animation: fade-up 0.6s ease-out forwards;
   }
+
+  .animate-shimmer {
+    animation: shimmer 2s ease-in-out infinite;
+  }
 }
 
 @keyframes float {
@@ -152,4 +166,9 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
 }

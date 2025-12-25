@@ -62,7 +62,7 @@ export default function Contact() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4"
+              className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 border border-primary/20"
             >
               Get in Touch
             </motion.span>
@@ -72,7 +72,7 @@ export default function Contact() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="font-display font-bold text-4xl lg:text-5xl text-foreground mb-6"
             >
-              Let's Build Something Amazing Together
+              Let's Build Something <span className="text-gradient-gold">Amazing</span> Together
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -106,7 +106,7 @@ export default function Contact() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group p-8 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 text-center"
               >
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors">
+                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors border border-primary/20">
                   <option.icon className="w-7 h-7 text-primary" />
                 </div>
                 <h3 className="font-display font-semibold text-xl text-foreground mb-3">
@@ -145,7 +145,7 @@ export default function Contact() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 border border-primary/20">
                 Contact Information
               </span>
               <h2 className="font-display font-bold text-3xl lg:text-4xl text-foreground mb-6">
@@ -158,7 +158,7 @@ export default function Contact() {
 
               <div className="space-y-6 mb-8">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
                     <Building2 className="w-6 h-6 text-primary" />
                   </div>
                   <div>
@@ -167,7 +167,7 @@ export default function Contact() {
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
                     <MapPin className="w-6 h-6 text-primary" />
                   </div>
                   <div>
