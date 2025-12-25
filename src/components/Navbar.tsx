@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -17,15 +18,12 @@ export function Navbar() {
   const location = useLocation();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-xl border-b border-border">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-display font-bold text-xl">D</span>
-            </div>
-            <span className="font-display font-bold text-xl text-foreground">Dominova</span>
+          <Link to="/" className="flex items-center gap-3">
+            <img src={logo} alt="Dominova" className="h-10 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -34,7 +32,7 @@ export function Navbar() {
               <Link key={link.path} to={link.path}>
                 <Button
                   variant="nav"
-                  className={location.pathname === link.path ? "text-foreground bg-secondary/50" : ""}
+                  className={location.pathname === link.path ? "text-primary bg-primary/10" : ""}
                 >
                   {link.name}
                 </Button>
@@ -44,6 +42,15 @@ export function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3">
+            <a
+              href="https://drive.google.com/file/d/16iXxD80p56zbbVEVAFQi6QxkYWF1Wvo_/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="hero-outline" size="default">
+                View Portfolio
+              </Button>
+            </a>
             <Link to="/contact">
               <Button variant="hero" size="default">
                 Get a Free Consultation
@@ -80,14 +87,24 @@ export function Navbar() {
                 >
                   <Button
                     variant="nav"
-                    className={`w-full justify-start ${location.pathname === link.path ? "text-foreground bg-secondary/50" : ""}`}
+                    className={`w-full justify-start ${location.pathname === link.path ? "text-primary bg-primary/10" : ""}`}
                   >
                     {link.name}
                   </Button>
                 </Link>
               ))}
+              <a
+                href="https://drive.google.com/file/d/16iXxD80p56zbbVEVAFQi6QxkYWF1Wvo_/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsOpen(false)}
+              >
+                <Button variant="hero-outline" className="w-full mt-2">
+                  View Portfolio
+                </Button>
+              </a>
               <Link to="/contact" onClick={() => setIsOpen(false)}>
-                <Button variant="hero" className="w-full mt-2">
+                <Button variant="hero" className="w-full">
                   Get a Free Consultation
                 </Button>
               </Link>

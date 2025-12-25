@@ -18,6 +18,7 @@ import {
   Clock,
   Users,
   Briefcase,
+  MessageCircle,
 } from "lucide-react";
 
 const internshipDomains = [
@@ -62,7 +63,7 @@ export default function Internships() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4"
+              className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 border border-primary/20"
             >
               Career Development
             </motion.span>
@@ -72,7 +73,7 @@ export default function Internships() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="font-display font-bold text-4xl lg:text-5xl text-foreground mb-6"
             >
-              Industry-Oriented Internships & Training
+              Industry-Oriented <span className="text-gradient-gold">Internships & Training</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -87,11 +88,22 @@ export default function Internships() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-4"
             >
               <Button variant="hero" size="xl" asChild>
                 <a href="#register">
                   Register for Internship
                   <ArrowRight className="w-5 h-5" />
+                </a>
+              </Button>
+              <Button variant="hero-outline" size="xl" asChild>
+                <a
+                  href="https://chat.whatsapp.com/HrZmthEuLwuGH2dgt4MZLT"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  Join Our Community
                 </a>
               </Button>
             </motion.div>
@@ -116,9 +128,9 @@ export default function Internships() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-6 rounded-2xl bg-background border border-border text-center"
+                className="p-6 rounded-2xl bg-background border border-border text-center hover:border-primary/30 transition-colors"
               >
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4 border border-primary/20">
                   <item.icon className="w-7 h-7 text-primary" />
                 </div>
                 <h3 className="font-display font-semibold text-lg text-foreground mb-2">{item.title}</h3>
@@ -148,7 +160,7 @@ export default function Internships() {
                 transition={{ duration: 0.5, delay: index * 0.05 }}
                 className="group p-6 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors border border-primary/20">
                   <domain.icon className="w-6 h-6 text-primary" />
                 </div>
                 <h3 className="font-display font-semibold text-lg text-foreground mb-2">{domain.title}</h3>
@@ -169,7 +181,7 @@ export default function Internships() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 border border-primary/20">
                 What You Get
               </span>
               <h2 className="font-display font-bold text-3xl lg:text-4xl text-foreground mb-6">
@@ -197,7 +209,7 @@ export default function Internships() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="relative rounded-2xl overflow-hidden bg-secondary aspect-square">
+              <div className="relative rounded-2xl overflow-hidden bg-secondary aspect-square border border-border">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center p-8">
@@ -207,7 +219,7 @@ export default function Internships() {
                   </div>
                 </div>
               </div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-2xl bg-primary/20 blur-2xl" />
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-2xl bg-primary/15 blur-2xl" />
             </motion.div>
           </div>
         </div>
@@ -227,7 +239,7 @@ export default function Internships() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+                <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 border border-primary/20">
                   Start Your Journey
                 </span>
                 <h2 className="font-display font-bold text-3xl lg:text-4xl text-foreground mb-4">
@@ -244,11 +256,16 @@ export default function Internships() {
                       <ArrowRight className="w-5 h-5" />
                     </Button>
                   </Link>
-                  <Link to="/contact">
-                    <Button variant="hero-outline" size="xl">
-                      Talk to Our Team
-                    </Button>
-                  </Link>
+                  <Button variant="hero-outline" size="xl" asChild>
+                    <a
+                      href="https://chat.whatsapp.com/HrZmthEuLwuGH2dgt4MZLT"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <MessageCircle className="w-5 h-5" />
+                      Join Our Community
+                    </a>
+                  </Button>
                 </div>
               </motion.div>
             </div>

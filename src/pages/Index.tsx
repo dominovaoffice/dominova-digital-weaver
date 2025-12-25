@@ -18,6 +18,7 @@ import {
   Rocket,
   CheckCircle,
   ArrowRight,
+  ExternalLink,
 } from "lucide-react";
 
 const services = [
@@ -85,7 +86,7 @@ export default function Index() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 border border-primary/20">
                 IT Services & Technology Solutions
               </span>
             </motion.div>
@@ -97,7 +98,7 @@ export default function Index() {
               className="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 leading-tight"
             >
               Building Scalable{" "}
-              <span className="text-gradient">Technology Solutions</span>{" "}
+              <span className="text-gradient-gold">Technology Solutions</span>{" "}
               for Businesses
             </motion.h1>
 
@@ -123,11 +124,16 @@ export default function Index() {
                   <ArrowRight className="w-5 h-5" />
                 </Button>
               </Link>
-              <Link to="/contact">
+              <a
+                href="https://drive.google.com/file/d/16iXxD80p56zbbVEVAFQi6QxkYWF1Wvo_/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Button variant="hero-outline" size="xl">
-                  Get a Free Consultation
+                  View Portfolio
+                  <ExternalLink className="w-5 h-5" />
                 </Button>
-              </Link>
+              </a>
             </motion.div>
           </div>
         </div>
@@ -139,7 +145,7 @@ export default function Index() {
           transition={{ delay: 1 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2"
         >
-          <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center p-2">
+          <div className="w-6 h-10 rounded-full border-2 border-primary/30 flex items-start justify-center p-2">
             <motion.div
               animate={{ y: [0, 12, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}
@@ -162,7 +168,7 @@ export default function Index() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="font-display font-bold text-4xl lg:text-5xl text-gradient mb-2">
+                <div className="font-display font-bold text-4xl lg:text-5xl text-gradient-gold mb-2">
                   {stat.value}
                 </div>
                 <div className="text-muted-foreground text-sm lg:text-base">{stat.label}</div>
@@ -220,7 +226,7 @@ export default function Index() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 border border-primary/20">
                 Why Dominova
               </span>
               <h2 className="font-display font-bold text-3xl lg:text-4xl text-foreground mb-6">
@@ -233,7 +239,7 @@ export default function Index() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
                     <Users className="w-5 h-5 text-primary" />
                   </div>
                   <div>
@@ -242,7 +248,7 @@ export default function Index() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
                     <Trophy className="w-5 h-5 text-primary" />
                   </div>
                   <div>
@@ -251,7 +257,7 @@ export default function Index() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
                     <Rocket className="w-5 h-5 text-primary" />
                   </div>
                   <div>
@@ -260,7 +266,7 @@ export default function Index() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
                     <Shield className="w-5 h-5 text-primary" />
                   </div>
                   <div>
@@ -278,7 +284,7 @@ export default function Index() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="relative rounded-2xl overflow-hidden bg-secondary aspect-[4/3]">
+              <div className="relative rounded-2xl overflow-hidden bg-secondary aspect-[4/3] border border-border">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center p-8">
@@ -288,7 +294,7 @@ export default function Index() {
                   </div>
                 </div>
               </div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-2xl bg-primary/20 blur-2xl" />
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-2xl bg-primary/15 blur-2xl" />
             </motion.div>
           </div>
         </div>
@@ -303,7 +309,7 @@ export default function Index() {
 
             <div className="relative grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
               <div>
-                <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+                <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 border border-primary/20">
                   Career Development
                 </span>
                 <h2 className="font-display font-bold text-3xl lg:text-4xl text-foreground mb-4">
@@ -339,7 +345,7 @@ export default function Index() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: index * 0.1 }}
-                    className="p-4 rounded-xl bg-secondary/50 border border-border text-center"
+                    className="p-4 rounded-xl bg-secondary/50 border border-border text-center hover:border-primary/30 transition-colors"
                   >
                     <span className="font-display font-medium text-foreground text-sm">{domain}</span>
                   </motion.div>

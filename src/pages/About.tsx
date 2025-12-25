@@ -59,7 +59,7 @@ export default function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4"
+              className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 border border-primary/20"
             >
               About Us
             </motion.span>
@@ -69,7 +69,7 @@ export default function About() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="font-display font-bold text-4xl lg:text-5xl text-foreground mb-6"
             >
-              Building the Future of Technology in Chennai
+              Building the Future of <span className="text-gradient-gold">Technology</span> in Chennai
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -94,7 +94,7 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 border border-primary/20">
                 Our Story
               </span>
               <h2 className="font-display font-bold text-3xl lg:text-4xl text-foreground mb-6">
@@ -134,10 +134,10 @@ export default function About() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="p-6 rounded-2xl bg-card border border-border text-center"
+                  className="p-6 rounded-2xl bg-card border border-border text-center hover:border-primary/30 transition-colors"
                 >
                   <milestone.icon className="w-8 h-8 text-primary mx-auto mb-3" />
-                  <div className="font-display font-bold text-2xl text-gradient mb-1">
+                  <div className="font-display font-bold text-2xl text-gradient-gold mb-1">
                     {milestone.value}
                   </div>
                   <p className="text-muted-foreground text-sm">{milestone.label}</p>
@@ -159,7 +159,7 @@ export default function About() {
               transition={{ duration: 0.5 }}
               className="p-8 lg:p-10 rounded-2xl bg-background border border-border"
             >
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 border border-primary/20">
                 <Eye className="w-7 h-7 text-primary" />
               </div>
               <h3 className="font-display font-bold text-2xl text-foreground mb-4">Our Vision</h3>
@@ -177,7 +177,7 @@ export default function About() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="p-8 lg:p-10 rounded-2xl bg-background border border-border"
             >
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 border border-primary/20">
                 <Target className="w-7 h-7 text-primary" />
               </div>
               <h3 className="font-display font-bold text-2xl text-foreground mb-4">Our Mission</h3>
@@ -208,9 +208,9 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-6 rounded-2xl bg-card border border-border text-center"
+                className="p-6 rounded-2xl bg-card border border-border text-center hover:border-primary/30 transition-colors"
               >
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4 border border-primary/20">
                   <value.icon className="w-7 h-7 text-primary" />
                 </div>
                 <h3 className="font-display font-semibold text-lg text-foreground mb-2">{value.title}</h3>
@@ -232,7 +232,7 @@ export default function About() {
               transition={{ duration: 0.5 }}
               className="text-center mb-12"
             >
-              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 border border-primary/20">
                 Leadership
               </span>
               <h2 className="font-display font-bold text-3xl lg:text-4xl text-foreground">
@@ -248,7 +248,7 @@ export default function About() {
               className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 p-8 lg:p-10 rounded-2xl bg-background border border-border"
             >
               <div className="w-32 h-32 lg:w-40 lg:h-40 rounded-2xl bg-secondary flex items-center justify-center shrink-0">
-                <span className="font-display font-bold text-4xl lg:text-5xl text-gradient">BD</span>
+                <span className="font-display font-bold text-4xl lg:text-5xl text-gradient-gold">BD</span>
               </div>
 
               <div className="text-center lg:text-left">
