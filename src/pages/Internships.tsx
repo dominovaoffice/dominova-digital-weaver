@@ -19,6 +19,7 @@ import {
   Users,
   Briefcase,
   MessageCircle,
+  Instagram,
 } from "lucide-react";
 
 const internshipDomains = [
@@ -245,9 +246,12 @@ export default function Internships() {
                 <h2 className="font-display font-bold text-3xl lg:text-4xl text-foreground mb-4">
                   Ready to Launch Your Tech Career?
                 </h2>
-                <p className="text-muted-foreground text-lg mb-8">
+                <p className="text-muted-foreground text-lg mb-4">
                   Register now to secure your spot in our upcoming batch. 
                   Limited seats available for each domain.
+                </p>
+                <p className="text-primary text-sm font-medium mb-8">
+                  For internship confirmation and updates, connect with us on our official Instagram handle.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <Link to="/contact">
@@ -256,6 +260,16 @@ export default function Internships() {
                       <ArrowRight className="w-5 h-5" />
                     </Button>
                   </Link>
+                  <Button variant="hero-outline" size="xl" asChild>
+                    <a
+                      href="https://instagram.com/dominova_chennai"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Instagram className="w-5 h-5" />
+                      Connect on Instagram
+                    </a>
+                  </Button>
                   <Button variant="hero-outline" size="xl" asChild>
                     <a
                       href="https://chat.whatsapp.com/HrZmthEuLwuGH2dgt4MZLT"
