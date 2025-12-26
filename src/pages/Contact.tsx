@@ -5,37 +5,14 @@ import { Button } from "@/components/ui/button";
 import { SectionHeader } from "@/components/SectionHeader";
 import {
   MapPin,
-  MessageSquare,
-  Users,
-  Instagram,
   ArrowRight,
   Building2,
+  Mail,
+  Phone,
+  User,
+  Users,
+  Instagram,
 } from "lucide-react";
-
-const contactOptions = [
-  {
-    icon: MessageSquare,
-    title: "Contact Our Team",
-    description: "Get in touch with our team for project inquiries and consultations.",
-    action: "Talk to Us",
-    href: "#contact-form",
-  },
-  {
-    icon: Users,
-    title: "Client Relations",
-    description: "Speak with our Client Relationship Manager for ongoing support.",
-    action: "Contact CRM",
-    href: "#contact-form",
-  },
-  {
-    icon: Instagram,
-    title: "Follow Us",
-    description: "Stay updated with our latest projects and announcements.",
-    action: "Connect on Instagram",
-    href: "https://instagram.com/dominova_chennai_",
-    external: true,
-  },
-];
 
 const services = [
   "Web Development",
@@ -45,6 +22,9 @@ const services = [
   "Data Analytics",
   "Cloud Services",
   "Cybersecurity",
+  "Digital Marketing",
+  "Startup Consulting",
+  "Workshops & Events",
   "Internship Programs",
 ];
 
@@ -87,7 +67,7 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Contact Options */}
+      {/* Contact Cards Section */}
       <section className="py-20 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8">
           <SectionHeader
@@ -97,45 +77,106 @@ export default function Contact() {
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {contactOptions.map((option, index) => (
-              <motion.div
-                key={option.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group p-8 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 text-center"
-              >
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors border border-primary/20">
-                  <option.icon className="w-7 h-7 text-primary" />
-                </div>
-                <h3 className="font-display font-semibold text-xl text-foreground mb-3">
-                  {option.title}
-                </h3>
-                <p className="text-muted-foreground mb-6">{option.description}</p>
-                {option.external ? (
-                  <a href={option.href} target="_blank" rel="noopener noreferrer">
-                    <Button variant="outline">
-                      {option.action}
-                      <ArrowRight className="w-4 h-4" />
-                    </Button>
-                  </a>
-                ) : (
-                  <a href={option.href}>
-                    <Button variant="outline">
-                      {option.action}
-                      <ArrowRight className="w-4 h-4" />
-                    </Button>
-                  </a>
-                )}
-              </motion.div>
-            ))}
+            {/* Office Contact */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="group p-8 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 text-center"
+            >
+              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors border border-primary/20">
+                <Building2 className="w-7 h-7 text-primary" />
+              </div>
+              <h3 className="font-display font-semibold text-xl text-foreground mb-3">
+                Office Contact
+              </h3>
+              <p className="text-muted-foreground mb-6">
+                Get in touch with our office for general inquiries and project discussions.
+              </p>
+              <div className="flex flex-col gap-3">
+                <a href="mailto:dominova.office@gmail.com">
+                  <Button variant="outline" className="w-full">
+                    <Mail className="w-4 h-4" />
+                    Email Office
+                  </Button>
+                </a>
+                <a href="tel:+918754325192">
+                  <Button variant="outline" className="w-full">
+                    <Phone className="w-4 h-4" />
+                    Call Office
+                  </Button>
+                </a>
+              </div>
+            </motion.div>
+
+            {/* CRM Contact */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="group p-8 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 text-center"
+            >
+              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors border border-primary/20">
+                <Users className="w-7 h-7 text-primary" />
+              </div>
+              <h3 className="font-display font-semibold text-xl text-foreground mb-2">
+                Client Relationship Manager
+              </h3>
+              <p className="text-primary font-medium mb-3">Keerthana</p>
+              <p className="text-muted-foreground mb-6">
+                Speak with our CRM for ongoing support and client services.
+              </p>
+              <div className="flex flex-col gap-3">
+                <a href="mailto:dominova.crm@gmail.com">
+                  <Button variant="outline" className="w-full">
+                    <Mail className="w-4 h-4" />
+                    Contact CRM
+                  </Button>
+                </a>
+                <a href="tel:+919629849619">
+                  <Button variant="outline" className="w-full">
+                    <Phone className="w-4 h-4" />
+                    Call CRM
+                  </Button>
+                </a>
+              </div>
+            </motion.div>
+
+            {/* Founder Contact */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="group p-8 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 text-center"
+            >
+              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors border border-primary/20">
+                <User className="w-7 h-7 text-primary" />
+              </div>
+              <h3 className="font-display font-semibold text-xl text-foreground mb-2">
+                Founder
+              </h3>
+              <p className="text-primary font-medium mb-3">B. Deepak</p>
+              <p className="text-muted-foreground mb-6">
+                Connect directly with our founder for partnerships and strategic discussions.
+              </p>
+              <div className="flex flex-col gap-3">
+                <a href="tel:+919025092699">
+                  <Button variant="outline" className="w-full">
+                    <Phone className="w-4 h-4" />
+                    Connect with Founder
+                  </Button>
+                </a>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Contact Form Section */}
-      <section id="contact-form" className="py-20 lg:py-28 bg-card">
+      {/* Social Connect */}
+      <section className="py-20 lg:py-28 bg-card">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Info Side */}
@@ -146,14 +187,14 @@ export default function Contact() {
               transition={{ duration: 0.6 }}
             >
               <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 border border-primary/20">
-                Contact Information
+                About Dominova
               </span>
               <h2 className="font-display font-bold text-3xl lg:text-4xl text-foreground mb-6">
-                Start a Conversation
+                Your Technology Partner
               </h2>
               <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-                Ready to transform your business with technology? Fill out the form and our 
-                team will get back to you within 24 hours.
+                Based in Chennai, Dominova delivers exceptional technology solutions and 
+                nurtures the next generation of tech talent through industry-oriented programs.
               </p>
 
               <div className="space-y-6 mb-8">
@@ -192,89 +233,35 @@ export default function Contact() {
               </div>
             </motion.div>
 
-            {/* Form Side */}
+            {/* Social Side */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="p-8 lg:p-10 rounded-2xl bg-background border border-border"
+              className="flex flex-col justify-center"
             >
-              <h3 className="font-display font-semibold text-xl text-foreground mb-6">
-                Send Us a Message
-              </h3>
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium text-foreground mb-2">
-                      First Name
-                    </label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
-                      placeholder="John"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="lastName" className="block text-sm font-medium text-foreground mb-2">
-                      Last Name
-                    </label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
-                      placeholder="Doe"
-                    />
-                  </div>
+              <div className="p-8 lg:p-10 rounded-2xl bg-background border border-border text-center">
+                <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-6 border border-primary/20">
+                  <Instagram className="w-8 h-8 text-primary" />
                 </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
-                    placeholder="john@example.com"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
-                    Subject
-                  </label>
-                  <select
-                    id="subject"
-                    className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
-                  >
-                    <option value="">Select a topic</option>
-                    <option value="project">Project Inquiry</option>
-                    <option value="internship">Internship Registration</option>
-                    <option value="partnership">Partnership Opportunity</option>
-                    <option value="support">Support Request</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={5}
-                    className="w-full px-4 py-3 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all resize-none"
-                    placeholder="Tell us about your project or inquiry..."
-                  />
-                </div>
-
-                <Button variant="hero" size="lg" className="w-full">
-                  Send Message
-                  <ArrowRight className="w-4 h-4" />
-                </Button>
-              </form>
+                <h3 className="font-display font-semibold text-xl text-foreground mb-3">
+                  Follow Us on Instagram
+                </h3>
+                <p className="text-muted-foreground mb-6">
+                  Stay updated with our latest projects, announcements, and company updates.
+                </p>
+                <a
+                  href="https://instagram.com/dominova_chennai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button variant="hero" size="lg">
+                    <Instagram className="w-5 h-5" />
+                    Connect on Instagram
+                  </Button>
+                </a>
+              </div>
             </motion.div>
           </div>
         </div>

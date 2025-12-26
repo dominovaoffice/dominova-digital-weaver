@@ -253,7 +253,7 @@ export default function About() {
 
               <div className="text-center lg:text-left">
                 <h3 className="font-display font-bold text-2xl text-foreground mb-2">B. Deepak</h3>
-                <p className="text-primary font-medium mb-4">Founder & CEO</p>
+                <p className="text-primary font-medium mb-4">Founder</p>
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   A passionate technologist with a vision to transform how businesses leverage technology. 
                   Deepak founded Dominova with the goal of creating impactful solutions while nurturing 

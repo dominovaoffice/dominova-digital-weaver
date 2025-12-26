@@ -14,6 +14,9 @@ import {
   Lightbulb,
   ArrowRight,
   CheckCircle,
+  Megaphone,
+  Rocket,
+  GraduationCap,
 } from "lucide-react";
 
 const allServices = [
@@ -64,6 +67,24 @@ const allServices = [
     title: "Technology Consulting",
     description: "Strategic technology consulting to help you make informed decisions. We assess, plan, and guide your digital transformation journey.",
     features: ["Technology Assessment", "Digital Strategy", "Project Management", "Vendor Selection"],
+  },
+  {
+    icon: Megaphone,
+    title: "Digital Marketing Services",
+    description: "Boost your online presence with our comprehensive digital marketing strategies including SEO, social media marketing, and brand growth.",
+    features: ["SEO Optimization", "Social Media Marketing", "Online Brand Growth", "Content Strategy"],
+  },
+  {
+    icon: Rocket,
+    title: "Startup Guidance & Consulting",
+    description: "End-to-end support for startups including registration guidance, technical roadmap planning, and compliance support.",
+    features: ["Startup Registration", "Technical Roadmap", "Compliance Support", "Business Strategy"],
+  },
+  {
+    icon: GraduationCap,
+    title: "Workshops & Technical Events",
+    description: "Engaging workshops and technical events for colleges and industry professionals including bootcamps and hands-on sessions.",
+    features: ["College Workshops", "Industry Sessions", "Technical Bootcamps", "Hands-on Training"],
   },
 ];
 
