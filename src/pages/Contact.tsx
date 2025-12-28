@@ -252,7 +252,7 @@ export default function Contact() {
                   Stay updated with our latest projects, announcements, and company updates.
                 </p>
                 <a
-                  href="https://instagram.com/dominova_chennai"
+                  href="https://www.instagram.com/dominova_chennai_?igsh=a3lvMTJocHQ4ZGk5"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

@@ -262,7 +262,7 @@ export default function Internships() {
                   </Link>
                   <Button variant="hero-outline" size="xl" asChild>
                     <a
-                      href="https://instagram.com/dominova_chennai"
+                      href="https://www.instagram.com/dominova_chennai_?igsh=a3lvMTJocHQ4ZGk5"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
