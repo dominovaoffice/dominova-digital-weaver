@@ -142,9 +142,13 @@ export default function Services() {
                 }`}
               >
                 <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 border border-primary/20">
+                  <motion.div 
+                    whileHover={{ scale: 1.05, rotate: 5 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 border border-primary/20 cursor-pointer"
+                  >
                     <service.icon className="w-7 h-7 text-primary" />
-                  </div>
+                  </motion.div>
                   <h2 className="font-display font-bold text-2xl lg:text-3xl text-foreground mb-4">
                     {service.title}
                   </h2>
@@ -152,11 +156,23 @@ export default function Services() {
                     {service.description}
                   </p>
                   <ul className="grid grid-cols-2 gap-3 mb-8">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-2 text-foreground text-sm">
-                        <CheckCircle className="w-4 h-4 text-primary shrink-0" />
-                        <span>{feature}</span>
-                      </li>
+                    {service.features.map((feature, featureIndex) => (
+                      <motion.li 
+                        key={feature} 
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.3, delay: featureIndex * 0.1 }}
+                        className="flex items-center gap-2 text-foreground text-sm group"
+                      >
+                        <motion.div
+                          whileHover={{ scale: 1.2 }}
+                          className="shrink-0"
+                        >
+                          <CheckCircle className="w-4 h-4 text-primary group-hover:text-primary/80 transition-colors" />
+                        </motion.div>
+                        <span className="group-hover:text-primary transition-colors">{feature}</span>
+                      </motion.li>
                     ))}
                   </ul>
                   <Link to="/contact">
@@ -168,13 +184,103 @@ export default function Services() {
                 </div>
 
                 <div className={`relative ${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                  <div className="relative rounded-2xl overflow-hidden bg-card border border-border aspect-[4/3] hover:border-primary/30 transition-colors">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <service.icon className="w-24 h-24 text-primary/30" />
+                  <motion.div 
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 200 }}
+                    className="group relative rounded-2xl overflow-hidden bg-card border border-border aspect-[4/3] hover:border-primary/50 transition-all duration-500 cursor-pointer"
+                  >
+                    {/* Animated background pattern */}
+                    <div className="absolute inset-0 opacity-20">
+                      <div className="absolute inset-0" style={{
+                        backgroundImage: `radial-gradient(circle at 20% 50%, hsl(var(--primary) / 0.3) 0%, transparent 50%),
+                                         radial-gradient(circle at 80% 80%, hsl(var(--primary) / 0.2) 0%, transparent 40%),
+                                         radial-gradient(circle at 40% 20%, hsl(var(--primary) / 0.15) 0%, transparent 30%)`
+                      }} />
                     </div>
-                  </div>
-                  <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-2xl bg-primary/20 blur-2xl" />
+                    
+                    {/* Grid pattern overlay */}
+                    <div className="absolute inset-0 opacity-5" style={{
+                      backgroundImage: `linear-gradient(hsl(var(--primary)) 1px, transparent 1px),
+                                       linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)`,
+                      backgroundSize: '40px 40px'
+                    }} />
+                    
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5 group-hover:from-primary/20 group-hover:to-primary/10 transition-all duration-500" />
+                    
+                    {/* Floating decorative elements */}
+                    <motion.div
+                      animate={{ 
+                        y: [0, -10, 0],
+                        rotate: [0, 5, 0]
+                      }}
+                      transition={{ 
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                      className="absolute top-6 right-6 w-12 h-12 rounded-lg bg-primary/10 border border-primary/20"
+                    />
+                    <motion.div
+                      animate={{ 
+                        y: [0, 10, 0],
+                        rotate: [0, -5, 0]
+                      }}
+                      transition={{ 
+                        duration: 5,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 0.5
+                      }}
+                      className="absolute bottom-12 left-6 w-8 h-8 rounded-full bg-primary/15 border border-primary/20"
+                    />
+                    <motion.div
+                      animate={{ 
+                        scale: [1, 1.1, 1],
+                        opacity: [0.3, 0.5, 0.3]
+                      }}
+                      transition={{ 
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 1
+                      }}
+                      className="absolute top-1/3 left-1/4 w-6 h-6 rounded bg-primary/10"
+                    />
+                    
+                    {/* Main icon */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <motion.div
+                        whileHover={{ scale: 1.1, rotate: 10 }}
+                        transition={{ type: "spring", stiffness: 200 }}
+                        className="relative"
+                      >
+                        <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-150 group-hover:bg-primary/30 transition-colors" />
+                        <service.icon className="w-24 h-24 text-primary/40 group-hover:text-primary/60 transition-colors relative z-10" />
+                      </motion.div>
+                    </div>
+                    
+                    {/* Service number badge */}
+                    <div className="absolute bottom-4 right-4 px-3 py-1 rounded-full bg-primary/10 border border-primary/20">
+                      <span className="text-primary font-display font-semibold text-sm">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                    </div>
+                  </motion.div>
+                  
+                  {/* Glow effect */}
+                  <motion.div 
+                    animate={{ 
+                      opacity: [0.3, 0.5, 0.3],
+                      scale: [1, 1.1, 1]
+                    }}
+                    transition={{ 
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                    className="absolute -bottom-4 -right-4 w-32 h-32 rounded-2xl bg-primary/20 blur-3xl pointer-events-none" 
+                  />
                 </div>
               </motion.div>
             ))}
