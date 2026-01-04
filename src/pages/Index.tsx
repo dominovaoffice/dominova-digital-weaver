@@ -125,7 +125,7 @@ export default function Index() {
                 </Button>
               </Link>
               <a
-                href="https://dominova-portfolio-showcase.lovable.app"
+                href="https://dominova-portfolio-showcase.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
               >

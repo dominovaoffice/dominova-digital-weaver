@@ -68,7 +68,7 @@ export function Footer() {
               ))}
               <li>
                 <a
-                  href="https://dominova-portfolio-showcase.lovable.app"
+                  href="https://dominova-portfolio-showcase.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-1"
