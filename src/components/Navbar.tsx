@@ -43,7 +43,7 @@ export function Navbar() {
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="https://dominova-portfolio-showcase.lovable.app"
+              href="https://dominova-portfolio-showcase.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -94,7 +94,7 @@ export function Navbar() {
                 </Link>
               ))}
               <a
-                href="https://dominova-portfolio-showcase.lovable.app"
+                href="https://dominova-portfolio-showcase.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}
