@@ -76,7 +76,7 @@ export default function Contact() {
             description="Select the best way to get in touch based on your needs."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-3xl mx-auto">
             {/* Office Contact */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -110,46 +110,12 @@ export default function Contact() {
               </div>
             </motion.div>
 
-            {/* CRM Contact */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="group p-8 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 text-center"
-            >
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors border border-primary/20">
-                <Users className="w-7 h-7 text-primary" />
-              </div>
-              <h3 className="font-display font-semibold text-xl text-foreground mb-2">
-                Client Relationship Manager
-              </h3>
-              <p className="text-primary font-medium mb-3">Keerthana</p>
-              <p className="text-muted-foreground mb-6">
-                Speak with our CRM for ongoing support and client services.
-              </p>
-              <div className="flex flex-col gap-3">
-                <a href="mailto:dominova.crm@gmail.com">
-                  <Button variant="outline" className="w-full">
-                    <Mail className="w-4 h-4" />
-                    Contact CRM
-                  </Button>
-                </a>
-                <a href="tel:+919629849619">
-                  <Button variant="outline" className="w-full">
-                    <Phone className="w-4 h-4" />
-                    Call CRM
-                  </Button>
-                </a>
-              </div>
-            </motion.div>
-
             {/* Founder Contact */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
               className="group p-8 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 text-center"
             >
               <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors border border-primary/20">
