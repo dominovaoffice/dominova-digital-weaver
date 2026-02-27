@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Rocket } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const navLinks = [
@@ -43,13 +43,21 @@ export function Navbar() {
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="https://dominova-portfolio-showcase.vercel.app/"
+              href="https://forms.gle/dGaYdC3mgWtxiBAr8"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button variant="hero-outline" size="default">
-                View Portfolio
-              </Button>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center gap-2 h-9 px-4 rounded-lg text-sm font-display font-semibold
+                  bg-gradient-to-r from-[hsl(240,80%,55%)] to-[hsl(280,80%,55%)]
+                  text-white shadow-[0_0_20px_hsl(260,80%,55%/0.3)]
+                  hover:shadow-[0_0_30px_hsl(260,80%,55%/0.5)] transition-shadow duration-300"
+              >
+                <Rocket className="w-3.5 h-3.5" />
+                Apply for Internship
+              </motion.button>
             </a>
             <Link to="/contact">
               <Button variant="hero" size="default">
@@ -94,14 +102,17 @@ export function Navbar() {
                 </Link>
               ))}
               <a
-                href="https://dominova-portfolio-showcase.vercel.app/"
+                href="https://forms.gle/dGaYdC3mgWtxiBAr8"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}
               >
-                <Button variant="hero-outline" className="w-full mt-2">
-                  View Portfolio
-                </Button>
+                <button className="w-full mt-2 flex items-center justify-center gap-2 h-10 rounded-lg text-sm font-display font-semibold
+                  bg-gradient-to-r from-[hsl(240,80%,55%)] to-[hsl(280,80%,55%)]
+                  text-white">
+                  <Rocket className="w-4 h-4" />
+                  Apply for Internship
+                </button>
               </a>
               <Link to="/contact" onClick={() => setIsOpen(false)}>
                 <Button variant="hero" className="w-full">

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
+import { ApplyButton } from "@/components/ApplyButton";
 import { ServiceCard } from "@/components/ServiceCard";
 import { SectionHeader } from "@/components/SectionHeader";
 import {
@@ -135,6 +136,14 @@ export default function Index() {
                 </Button>
               </a>
             </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.45 }}
+              className="mt-4"
+            >
+              <ApplyButton size="lg" />
+            </motion.div>
           </div>
         </div>
 
@@ -204,7 +213,7 @@ export default function Index() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-center mt-12"
+            className="text-center mt-12 flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Link to="/services">
               <Button variant="outline" size="lg">
@@ -212,6 +221,7 @@ export default function Index() {
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </Link>
+            <ApplyButton size="md" />
           </motion.div>
         </div>
       </section>
