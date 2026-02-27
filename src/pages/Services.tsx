@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
+import { ApplyButton } from "@/components/ApplyButton";
 import { SectionHeader } from "@/components/SectionHeader";
 import {
   Globe,
@@ -18,6 +19,18 @@ import {
   Rocket,
   GraduationCap,
 } from "lucide-react";
+
+import serviceWebDev from "@/assets/service-web-dev.jpg";
+import serviceMobileDev from "@/assets/service-mobile-dev.jpg";
+import serviceInternship from "@/assets/service-internship.jpg";
+import serviceWorkshop from "@/assets/service-workshop.jpg";
+
+const serviceImages: Record<string, string> = {
+  "Web Development": serviceWebDev,
+  "Mobile App Development": serviceMobileDev,
+  "Workshops & Technical Events": serviceWorkshop,
+  "Startup Guidance & Consulting": serviceInternship,
+};
 
 const allServices = [
   {
@@ -168,17 +181,46 @@ export default function Services() {
                 </div>
 
                 <div className={`relative ${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                  <div className="relative rounded-2xl overflow-hidden bg-card border border-border aspect-[4/3] hover:border-primary/30 transition-colors">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <service.icon className="w-24 h-24 text-primary/30" />
-                    </div>
-                  </div>
+                  <motion.div
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ duration: 0.4 }}
+                    className="relative rounded-2xl overflow-hidden bg-card border border-border aspect-[4/3] hover:border-primary/30 transition-colors"
+                  >
+                    {serviceImages[service.title] ? (
+                      <>
+                        <img
+                          src={serviceImages[service.title]}
+                          alt={service.title}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-background/40" />
+                      </>
+                    ) : (
+                      <>
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <service.icon className="w-24 h-24 text-primary/30" />
+                        </div>
+                      </>
+                    )}
+                  </motion.div>
                   <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-2xl bg-primary/20 blur-2xl" />
                 </div>
               </motion.div>
             ))}
           </div>
+
+          {/* Apply button below services */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mt-16"
+          >
+            <ApplyButton size="lg" />
+          </motion.div>
         </div>
       </section>
 
