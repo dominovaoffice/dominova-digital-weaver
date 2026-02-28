@@ -4,6 +4,15 @@ import { useEffect, useState } from "react";
 
 const APPLY_URL = "https://forms.gle/dGaYdC3mgWtxiBAr8";
 
+function trackApplyClick() {
+  try {
+    if (typeof window !== "undefined" && (window as any).fbq) {
+      (window as any).fbq("track", "Lead");
+      (window as any).fbq("trackCustom", "InternshipApplyClick");
+    }
+  } catch (_) {}
+}
+
 export function FloatingApplyButton() {
   const [visible, setVisible] = useState(false);
 
@@ -22,6 +31,7 @@ export function FloatingApplyButton() {
             href={APPLY_URL}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={trackApplyClick}
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
@@ -42,7 +52,7 @@ export function FloatingApplyButton() {
 
       {/* Mobile sticky bottom bar */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 p-3 bg-background/90 backdrop-blur-lg border-t border-border">
-        <a href={APPLY_URL} target="_blank" rel="noopener noreferrer">
+        <a href={APPLY_URL} target="_blank" rel="noopener noreferrer" onClick={trackApplyClick}>
           <motion.button
             whileTap={{ scale: 0.97 }}
             className="w-full flex items-center justify-center gap-2 h-12 rounded-lg

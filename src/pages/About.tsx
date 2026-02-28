@@ -2,7 +2,9 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
+import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { SectionHeader } from "@/components/SectionHeader";
+import founderImage from "@/assets/founder.jpg";
 import {
   Target,
   Eye,
@@ -137,9 +139,10 @@ export default function About() {
                   className="p-6 rounded-2xl bg-card border border-border text-center hover:border-primary/30 transition-colors"
                 >
                   <milestone.icon className="w-8 h-8 text-primary mx-auto mb-3" />
-                  <div className="font-display font-bold text-2xl text-gradient-gold mb-1">
-                    {milestone.value}
-                  </div>
+                  <AnimatedCounter
+                    value={milestone.value}
+                    className="font-display font-bold text-2xl text-gradient-gold mb-1 inline-block"
+                  />
                   <p className="text-muted-foreground text-sm">{milestone.label}</p>
                 </motion.div>
               ))}
@@ -247,9 +250,18 @@ export default function About() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 p-8 lg:p-10 rounded-2xl bg-background border border-border"
             >
-              <div className="w-32 h-32 lg:w-40 lg:h-40 rounded-2xl bg-secondary flex items-center justify-center shrink-0">
-                <span className="font-display font-bold text-4xl lg:text-5xl text-gradient-gold">BD</span>
-              </div>
+              <motion.div
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.3 }}
+                className="w-32 h-32 lg:w-40 lg:h-40 rounded-2xl overflow-hidden shrink-0 border border-border"
+              >
+                <img
+                  src={founderImage}
+                  alt="B. Deepak - Founder of Dominova"
+                  className="w-full h-full object-cover object-top"
+                  loading="lazy"
+                />
+              </motion.div>
 
               <div className="text-center lg:text-left">
                 <h3 className="font-display font-bold text-2xl text-foreground mb-2">B. Deepak</h3>

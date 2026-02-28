@@ -3,6 +3,15 @@ import { motion } from "framer-motion";
 
 const APPLY_URL = "https://forms.gle/dGaYdC3mgWtxiBAr8";
 
+function trackApplyClick() {
+  try {
+    if (typeof window !== "undefined" && (window as any).fbq) {
+      (window as any).fbq("track", "Lead");
+      (window as any).fbq("trackCustom", "InternshipApplyClick");
+    }
+  } catch (_) {}
+}
+
 interface ApplyButtonProps {
   size?: "sm" | "md" | "lg";
   className?: string;
@@ -17,7 +26,7 @@ export function ApplyButton({ size = "md", className = "", fullWidth = false }: 
   };
 
   return (
-    <a href={APPLY_URL} target="_blank" rel="noopener noreferrer" className={fullWidth ? "w-full" : ""}>
+    <a href={APPLY_URL} target="_blank" rel="noopener noreferrer" onClick={trackApplyClick} className={fullWidth ? "w-full" : ""}>
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.97 }}
