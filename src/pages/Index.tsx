@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { ApplyButton } from "@/components/ApplyButton";
-import { ServiceCard } from "@/components/ServiceCard";
+import { TiltCard } from "@/components/TiltCard";
+import { AnimatedCounter } from "@/components/AnimatedCounter";
+import { ParticlesBackground } from "@/components/ParticlesBackground";
 import { SectionHeader } from "@/components/SectionHeader";
 import {
   Globe,
@@ -77,6 +79,7 @@ export default function Index() {
         {/* Background */}
         <div className="absolute inset-0 bg-gradient-hero" />
         <div className="absolute inset-0 bg-gradient-glow opacity-60" />
+        <ParticlesBackground />
         <div className="absolute top-1/4 -right-1/4 w-[800px] h-[800px] rounded-full bg-primary/5 blur-3xl" />
         <div className="absolute bottom-0 -left-1/4 w-[600px] h-[600px] rounded-full bg-primary/3 blur-3xl" />
 
@@ -177,9 +180,10 @@ export default function Index() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="font-display font-bold text-4xl lg:text-5xl text-gradient-gold mb-2">
-                  {stat.value}
-                </div>
+                <AnimatedCounter
+                  value={stat.value}
+                  className="font-display font-bold text-4xl lg:text-5xl text-gradient-gold mb-2 inline-block"
+                />
                 <div className="text-muted-foreground text-sm lg:text-base">{stat.label}</div>
               </motion.div>
             ))}
@@ -198,7 +202,7 @@ export default function Index() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {services.map((service, index) => (
-              <ServiceCard
+              <TiltCard
                 key={service.title}
                 icon={service.icon}
                 title={service.title}
