@@ -48,7 +48,7 @@ export function ParticlesBackground() {
       const rect = canvas.getBoundingClientRect();
       mouseRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
     };
-    if (!isMobile) canvas.addEventListener("mousemove", onMouse);
+    if (!isMobile) window.addEventListener("mousemove", onMouse, { passive: true });
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -102,14 +102,14 @@ export function ParticlesBackground() {
     return () => {
       cancelAnimationFrame(animRef.current);
       window.removeEventListener("resize", resize);
-      if (!isMobile) canvas.removeEventListener("mousemove", onMouse);
+      if (!isMobile) window.removeEventListener("mousemove", onMouse);
     };
   }, [initParticles, isMobile, CONNECTION_DIST]);
 
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-auto z-0"
+      className="absolute inset-0 w-full h-full pointer-events-none z-0"
       style={{ opacity: 0.7 }}
     />
   );
