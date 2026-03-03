@@ -20,17 +20,6 @@ import {
   GraduationCap,
 } from "lucide-react";
 
-import serviceWebDev from "@/assets/service-web-dev.jpg";
-import serviceMobileDev from "@/assets/service-mobile-dev.jpg";
-import serviceInternship from "@/assets/service-internship.jpg";
-import serviceWorkshop from "@/assets/service-workshop.jpg";
-
-const serviceImages: Record<string, string> = {
-  "Web Development": serviceWebDev,
-  "Mobile App Development": serviceMobileDev,
-  "Workshops & Technical Events": serviceWorkshop,
-  "Startup Guidance & Consulting": serviceInternship,
-};
 
 const allServices = [
   {
@@ -186,24 +175,10 @@ export default function Services() {
                     transition={{ duration: 0.4 }}
                     className="relative rounded-2xl overflow-hidden bg-card border border-border aspect-[4/3] hover:border-primary/30 transition-colors"
                   >
-                    {serviceImages[service.title] ? (
-                      <>
-                        <img
-                          src={serviceImages[service.title]}
-                          alt={service.title}
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                        />
-                        <div className="absolute inset-0 bg-background/40" />
-                      </>
-                    ) : (
-                      <>
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <service.icon className="w-24 h-24 text-primary/30" />
-                        </div>
-                      </>
-                    )}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <service.icon className="w-24 h-24 text-primary/30" />
+                    </div>
                   </motion.div>
                   <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-2xl bg-primary/20 blur-2xl" />
                 </div>
