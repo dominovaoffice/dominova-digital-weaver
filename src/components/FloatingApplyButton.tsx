@@ -51,16 +51,16 @@ export function FloatingApplyButton() {
       </AnimatePresence>
 
       {/* Mobile sticky bottom bar */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 p-3 bg-background/90 backdrop-blur-lg border-t border-border">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 p-2 bg-background/90 backdrop-blur-lg border-t border-border">
         <a href={APPLY_URL} target="_blank" rel="noopener noreferrer" onClick={trackApplyClick}>
           <motion.button
             whileTap={{ scale: 0.97 }}
-            className="w-full flex items-center justify-center gap-2 h-12 rounded-lg
+            className="w-full flex items-center justify-center gap-1.5 h-9 rounded-md
               bg-gradient-to-r from-[hsl(240,80%,55%)] to-[hsl(280,80%,55%)]
-              text-white font-display font-semibold text-base
-              shadow-[0_0_20px_hsl(260,80%,55%/0.3)]"
+              text-white font-display font-semibold text-sm
+              shadow-[0_0_15px_hsl(260,80%,55%/0.25)]"
           >
-            <Rocket className="w-4 h-4" />
+            <Rocket className="w-3.5 h-3.5" />
             Apply for Internship
           </motion.button>
         </a>
