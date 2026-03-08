@@ -28,6 +28,7 @@ export function Layout({ children }: LayoutProps) {
 
       <Footer />
       <FloatingApplyButton />
+      <FloatingInstagramButton />
     </div>
   );
 }
