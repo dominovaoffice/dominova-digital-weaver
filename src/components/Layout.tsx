@@ -16,7 +16,7 @@ export function Layout({ children }: LayoutProps) {
       <PageLoader />
       <ScrollProgressBar />
       <Navbar />
-      <main className="flex-1 pt-16 lg:pt-20 pb-16 md:pb-0">
+      <main className="flex-1 pt-16 lg:pt-20 pb-14 md:pb-0">
         {children}
       </main>
 
