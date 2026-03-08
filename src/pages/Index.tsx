@@ -167,7 +167,7 @@ export default function Index() {
             >
               <ApplyButton size="lg" />
             </motion.div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Scroll indicator */}
