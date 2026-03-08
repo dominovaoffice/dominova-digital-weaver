@@ -8,6 +8,13 @@ import serviceWebImg from "@/assets/service-web.png";
 import serviceMobileImg from "@/assets/service-mobile.png";
 import serviceInternshipImg from "@/assets/service-internship.png";
 import serviceWorkshopImg from "@/assets/service-workshop.png";
+import serviceUiuxImg from "@/assets/service-uiux.png";
+import serviceDataImg from "@/assets/service-data.png";
+import serviceCloudImg from "@/assets/service-cloud.png";
+import serviceSecurityImg from "@/assets/service-security.png";
+import serviceConsultingImg from "@/assets/service-consulting.png";
+import serviceMarketingImg from "@/assets/service-marketing.png";
+import serviceStartupImg from "@/assets/service-startup.png";
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
 import { MagneticHover } from "@/components/MagneticHover";
 import { FloatingShapes } from "@/components/FloatingShapes";
@@ -55,42 +62,49 @@ const allServices = [
     title: "UI/UX Design",
     description: "User-centered design that creates intuitive, engaging, and accessible digital experiences. From wireframes to high-fidelity prototypes.",
     features: ["User Research", "Wireframing & Prototyping", "Visual Design", "Usability Testing"],
+    image: serviceUiuxImg,
   },
   {
     icon: BarChart3,
     title: "Data Analytics & Data Science",
     description: "Transform raw data into actionable insights. We provide data analysis, visualization, and machine learning solutions.",
     features: ["Data Visualization", "Predictive Analytics", "Machine Learning", "Business Intelligence"],
+    image: serviceDataImg,
   },
   {
     icon: Cloud,
     title: "Cloud & Deployment Services",
     description: "Scalable cloud solutions using AWS, Azure, and Google Cloud. We handle deployment, hosting, and infrastructure management.",
     features: ["Cloud Migration", "DevOps & CI/CD", "Serverless Architecture", "Performance Optimization"],
+    image: serviceCloudImg,
   },
   {
     icon: Shield,
     title: "Cybersecurity Solutions",
     description: "Protect your digital assets with comprehensive security solutions. We conduct audits, implement security measures, and provide ongoing monitoring.",
     features: ["Security Audits", "Penetration Testing", "Compliance & Governance", "Security Training"],
+    image: serviceSecurityImg,
   },
   {
     icon: Lightbulb,
     title: "Technology Consulting",
     description: "Strategic technology consulting to help you make informed decisions. We assess, plan, and guide your digital transformation journey.",
     features: ["Technology Assessment", "Digital Strategy", "Project Management", "Vendor Selection"],
+    image: serviceConsultingImg,
   },
   {
     icon: Megaphone,
     title: "Digital Marketing Services",
     description: "Boost your online presence with our comprehensive digital marketing strategies including SEO, social media marketing, and brand growth.",
     features: ["SEO Optimization", "Social Media Marketing", "Online Brand Growth", "Content Strategy"],
+    image: serviceMarketingImg,
   },
   {
     icon: Rocket,
     title: "Startup Guidance & Consulting",
     description: "End-to-end support for startups including registration guidance, technical roadmap planning, and compliance support.",
     features: ["Startup Registration", "Technical Roadmap", "Compliance Support", "Business Strategy"],
+    image: serviceStartupImg,
   },
   {
     icon: GraduationCap,
