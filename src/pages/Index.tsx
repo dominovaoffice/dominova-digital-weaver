@@ -12,6 +12,8 @@ import { FloatingShapes } from "@/components/FloatingShapes";
 import { SectionHeader } from "@/components/SectionHeader";
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
 import { MagneticHover } from "@/components/MagneticHover";
+import { TestimonialCarousel } from "@/components/TestimonialCarousel";
+import { InternshipConversion } from "@/components/InternshipConversion";
 import {
   Globe,
   Smartphone,
@@ -371,6 +373,12 @@ export default function Index() {
           </ScrollReveal>
         </div>
       </section>
+
+      {/* Why Choose Dominova Internship */}
+      <InternshipConversion />
+
+      {/* Student Testimonials */}
+      <TestimonialCarousel />
 
       {/* CTA Section */}
       <section className="py-20 lg:py-28 bg-card">
