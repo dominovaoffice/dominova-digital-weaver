@@ -17,7 +17,7 @@ const navLinks = [
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const { theme, toggleTheme } = useTheme();
+  const { theme, cycleTheme, themeLabel } = useTheme();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-xl border-b border-border">
@@ -47,13 +47,13 @@ export function Navbar() {
             <motion.button
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
-              onClick={toggleTheme}
+              onClick={cycleTheme}
               className="inline-flex items-center gap-2 h-9 px-3 rounded-lg text-sm font-display font-semibold
                 border border-border bg-secondary text-foreground hover:bg-primary/10 hover:border-primary/50 transition-colors"
-              aria-label="Switch Theme"
+              aria-label="Change Theme"
             >
               <Palette className="w-4 h-4 text-primary" />
-              <span className="hidden xl:inline">{theme === "gold" ? "Cyber" : "Gold"}</span>
+              <span className="hidden xl:inline">{themeLabel}</span>
             </motion.button>
             <a
               href="https://forms.gle/dGaYdC3mgWtxiBAr8"
@@ -115,12 +115,12 @@ export function Navbar() {
                 </Link>
               ))}
               <button
-                onClick={toggleTheme}
+                onClick={cycleTheme}
                 className="w-full flex items-center justify-center gap-2 h-10 rounded-lg text-sm font-display font-semibold
                   border border-border bg-secondary text-foreground hover:bg-primary/10"
               >
                 <Palette className="w-4 h-4 text-primary" />
-                Switch to {theme === "gold" ? "Cyber" : "Gold"} Theme
+                Change Theme: {themeLabel}
               </button>
               <a
                 href="https://forms.gle/dGaYdC3mgWtxiBAr8"
