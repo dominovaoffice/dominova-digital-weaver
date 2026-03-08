@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import internshipCareerImg from "@/assets/internship-career-support.png";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -216,21 +217,15 @@ export default function Internships() {
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 200 }}
-                  className="relative rounded-2xl overflow-hidden bg-secondary aspect-square border border-border"
+                  className="relative rounded-2xl overflow-hidden border border-border aspect-square"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center p-8">
-                      <motion.div
-                        whileHover={{ rotate: 15, scale: 1.1 }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                      >
-                        <Award className="w-20 h-20 text-primary mx-auto mb-4" />
-                      </motion.div>
-                      <h3 className="font-display font-bold text-2xl text-foreground mb-2">Industry Certified</h3>
-                      <p className="text-muted-foreground">Recognized certification upon completion</p>
-                    </div>
-                  </div>
+                  <img
+                    src={internshipCareerImg}
+                    alt="Career support - laptop with resume builder, certificate of completion, LinkedIn profile on tablet, and interview tips notebook"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
                 </motion.div>
                 <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-2xl bg-primary/15 blur-2xl" />
               </div>
