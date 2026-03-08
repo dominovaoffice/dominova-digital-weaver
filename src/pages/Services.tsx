@@ -4,6 +4,9 @@ import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { ApplyButton } from "@/components/ApplyButton";
 import { SectionHeader } from "@/components/SectionHeader";
+import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
+import { MagneticHover } from "@/components/MagneticHover";
+import { FloatingShapes } from "@/components/FloatingShapes";
 import {
   Globe,
   Smartphone,
@@ -97,6 +100,7 @@ export default function Services() {
       <section className="py-20 lg:py-28 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-hero" />
         <div className="absolute inset-0 bg-gradient-glow opacity-40" />
+        <FloatingShapes variant="hero" />
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <motion.span
@@ -129,73 +133,80 @@ export default function Services() {
       </section>
 
       {/* Services List */}
-      <section className="py-20 lg:py-28">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-20 lg:py-28 relative">
+        <FloatingShapes variant="section" />
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="space-y-16 lg:space-y-24">
             {allServices.map((service, index) => (
-              <motion.div
+              <ScrollReveal
                 key={service.title}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className={`grid lg:grid-cols-2 gap-8 lg:gap-16 items-center ${
-                  index % 2 === 1 ? "lg:flex-row-reverse" : ""
-                }`}
+                direction={index % 2 === 0 ? "left" : "right"}
+                delay={0.1}
               >
-                <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 border border-primary/20">
-                    <service.icon className="w-7 h-7 text-primary" />
+                <div
+                  className={`grid lg:grid-cols-2 gap-8 lg:gap-16 items-center ${
+                    index % 2 === 1 ? "lg:flex-row-reverse" : ""
+                  }`}
+                >
+                  <div className={index % 2 === 1 ? "lg:order-2" : ""}>
+                    <MagneticHover strength={0.3}>
+                      <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 border border-primary/20">
+                        <service.icon className="w-7 h-7 text-primary" />
+                      </div>
+                    </MagneticHover>
+                    <h2 className="font-display font-bold text-2xl lg:text-3xl text-foreground mb-4">
+                      {service.title}
+                    </h2>
+                    <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+                      {service.description}
+                    </p>
+                    <StaggerContainer className="grid grid-cols-2 gap-3 mb-8" staggerDelay={0.06}>
+                      {service.features.map((feature) => (
+                        <StaggerItem key={feature} direction="left">
+                          <div className="flex items-center gap-2 text-foreground text-sm">
+                            <CheckCircle className="w-4 h-4 text-primary shrink-0" />
+                            <span>{feature}</span>
+                          </div>
+                        </StaggerItem>
+                      ))}
+                    </StaggerContainer>
+                    <Link to="/contact">
+                      <Button variant="outline" size="lg">
+                        Get a Quote
+                        <ArrowRight className="w-4 h-4" />
+                      </Button>
+                    </Link>
                   </div>
-                  <h2 className="font-display font-bold text-2xl lg:text-3xl text-foreground mb-4">
-                    {service.title}
-                  </h2>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                    {service.description}
-                  </p>
-                  <ul className="grid grid-cols-2 gap-3 mb-8">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-2 text-foreground text-sm">
-                        <CheckCircle className="w-4 h-4 text-primary shrink-0" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link to="/contact">
-                    <Button variant="outline" size="lg">
-                      Get a Quote
-                      <ArrowRight className="w-4 h-4" />
-                    </Button>
-                  </Link>
-                </div>
 
-                <div className={`relative ${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                  <motion.div
-                    whileHover={{ scale: 1.03 }}
-                    transition={{ duration: 0.4 }}
-                    className="relative rounded-2xl overflow-hidden bg-card border border-border aspect-[4/3] hover:border-primary/30 transition-colors"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <service.icon className="w-24 h-24 text-primary/30" />
-                    </div>
-                  </motion.div>
-                  <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-2xl bg-primary/20 blur-2xl" />
+                  <div className={`relative ${index % 2 === 1 ? "lg:order-1" : ""}`}>
+                    <motion.div
+                      whileHover={{ scale: 1.03, y: -5 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      className="relative rounded-2xl overflow-hidden bg-card border border-border aspect-[4/3] hover:border-primary/30 transition-colors"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <motion.div
+                          whileHover={{ rotate: 10, scale: 1.1 }}
+                          transition={{ type: "spring", stiffness: 200 }}
+                        >
+                          <service.icon className="w-24 h-24 text-primary/30" />
+                        </motion.div>
+                      </div>
+                    </motion.div>
+                    <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-2xl bg-primary/20 blur-2xl" />
+                  </div>
                 </div>
-              </motion.div>
+              </ScrollReveal>
             ))}
           </div>
 
           {/* Apply button below services */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mt-16"
-          >
-            <ApplyButton size="lg" />
-          </motion.div>
+          <ScrollReveal direction="up" delay={0.2}>
+            <div className="text-center mt-16">
+              <ApplyButton size="lg" />
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -208,16 +219,20 @@ export default function Services() {
             description="Contact our team to discuss your requirements and get a customized solution for your business needs."
           />
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/contact">
-              <Button variant="hero" size="xl">
-                Get a Free Consultation
-              </Button>
-            </Link>
-            <Link to="/about">
-              <Button variant="hero-outline" size="xl">
-                Learn About Our Team
-              </Button>
-            </Link>
+            <MagneticHover strength={0.15}>
+              <Link to="/contact">
+                <Button variant="hero" size="xl">
+                  Get a Free Consultation
+                </Button>
+              </Link>
+            </MagneticHover>
+            <MagneticHover strength={0.15}>
+              <Link to="/about">
+                <Button variant="hero-outline" size="xl">
+                  Learn About Our Team
+                </Button>
+              </Link>
+            </MagneticHover>
           </div>
         </div>
       </section>
