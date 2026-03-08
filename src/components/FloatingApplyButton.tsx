@@ -37,7 +37,7 @@ export function FloatingApplyButton() {
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            className="hidden md:flex fixed bottom-6 right-6 z-50 items-center gap-2 px-5 py-3 rounded-full
+            className="hidden md:flex fixed bottom-20 right-6 z-50 items-center gap-2 px-5 py-3 rounded-full
               bg-gradient-to-r from-[hsl(240,80%,55%)] to-[hsl(280,80%,55%)]
               text-white font-display font-semibold text-sm
               shadow-[0_0_30px_hsl(260,80%,55%/0.4)]

@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
@@ -72,16 +73,22 @@ const features = [
 ];
 
 export default function Index() {
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 bg-gradient-hero" />
-        <div className="absolute inset-0 bg-gradient-glow opacity-60" />
+      <section ref={heroRef} className="relative min-h-[85vh] lg:min-h-[90vh] flex items-center overflow-hidden">
+        {/* Parallax Background */}
+        <motion.div style={{ y: heroY }} className="absolute inset-0 will-change-transform">
+          <div className="absolute inset-0 bg-gradient-hero" />
+          <div className="absolute inset-0 bg-gradient-glow opacity-60" />
+          <div className="absolute top-1/4 -right-1/4 w-[800px] h-[800px] rounded-full bg-primary/5 blur-3xl" />
+          <div className="absolute bottom-0 -left-1/4 w-[600px] h-[600px] rounded-full bg-primary/3 blur-3xl" />
+        </motion.div>
         <ParticlesBackground />
-        <div className="absolute top-1/4 -right-1/4 w-[800px] h-[800px] rounded-full bg-primary/5 blur-3xl" />
-        <div className="absolute bottom-0 -left-1/4 w-[600px] h-[600px] rounded-full bg-primary/3 blur-3xl" />
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
@@ -99,7 +106,7 @@ export default function Index() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 leading-tight"
+              className="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 leading-tight"
             >
               Building Scalable{" "}
               <span className="text-gradient-gold">Technology Solutions</span>{" "}
@@ -110,7 +117,7 @@ export default function Index() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-muted-foreground text-lg lg:text-xl mb-8 max-w-2xl mx-auto leading-relaxed"
+              className="text-muted-foreground text-base sm:text-lg lg:text-xl mb-8 max-w-2xl mx-auto leading-relaxed px-2"
             >
               Dominova is a Chennai-based IT company delivering custom software, web & mobile development, 
               and industry-oriented training programs for businesses and institutions.
@@ -180,10 +187,10 @@ export default function Index() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="text-center"
               >
-                <AnimatedCounter
-                  value={stat.value}
-                  className="font-display font-bold text-4xl lg:text-5xl text-gradient-gold mb-2 inline-block"
-                />
+                 <AnimatedCounter
+                    value={stat.value}
+                    className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-gradient-gold mb-2 inline-block"
+                  />
                 <div className="text-muted-foreground text-sm lg:text-base">{stat.label}</div>
               </motion.div>
             ))}
@@ -317,7 +324,7 @@ export default function Index() {
       {/* Internships CTA */}
       <section className="py-20 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="relative rounded-3xl overflow-hidden bg-card border border-border p-8 lg:p-16">
+          <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-card border border-border p-6 sm:p-8 lg:p-16">
             <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-primary/5" />
             <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-primary/10 blur-3xl" />
 

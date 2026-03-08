@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FloatingApplyButton } from "@/components/FloatingApplyButton";
+import { FloatingInstagramButton } from "@/components/FloatingInstagramButton";
 import { ScrollProgressBar } from "@/components/ScrollProgressBar";
 import { ApplyButton } from "@/components/ApplyButton";
 
@@ -10,10 +11,10 @@ interface LayoutProps {
 
 export function Layout({ children }: LayoutProps) {
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="min-h-screen flex flex-col bg-background overflow-x-hidden">
       <ScrollProgressBar />
       <Navbar />
-      <main className="flex-1 pt-16 lg:pt-20">
+      <main className="flex-1 pt-16 lg:pt-20 pb-16 md:pb-0">
         {children}
       </main>
 
@@ -27,6 +28,7 @@ export function Layout({ children }: LayoutProps) {
 
       <Footer />
       <FloatingApplyButton />
+      <FloatingInstagramButton />
     </div>
   );
 }
