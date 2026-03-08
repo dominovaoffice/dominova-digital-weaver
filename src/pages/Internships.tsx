@@ -1,3 +1,4 @@
+import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import internshipCareerImg from "@/assets/internship-career-support.png";
@@ -54,6 +55,18 @@ const benefits = [
 ];
 
 export default function Internships() {
+  // SEO: Set page title and meta description
+  React.useEffect(() => {
+    document.title = "Software Development Internship Program | Dominova Chennai";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute("content", "Join Dominova's industry-oriented internship programs in web development, data science, cybersecurity & more. Real projects, mentorship, and certification in Chennai. Apply now.");
+    const metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (metaKeywords) metaKeywords.setAttribute("content", "software internship, web development internship, IT internship for students, internship in Chennai, real time project internship, data science internship, cybersecurity internship, programming internship Chennai");
+    return () => {
+      document.title = "Dominova – Web Development & Software Internship Programs for Students";
+    };
+  }, []);
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -79,7 +92,7 @@ export default function Internships() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-foreground mb-6"
             >
-              Industry-Oriented <span className="text-gradient-gold">Internships & Training</span>
+              Software Development <span className="text-gradient-gold">Internship Program</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
