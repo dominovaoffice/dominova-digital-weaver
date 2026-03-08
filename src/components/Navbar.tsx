@@ -114,6 +114,14 @@ export function Navbar() {
                   </Button>
                 </Link>
               ))}
+              <button
+                onClick={toggleTheme}
+                className="w-full flex items-center justify-center gap-2 h-10 rounded-lg text-sm font-display font-semibold
+                  border border-border bg-secondary text-foreground hover:bg-primary/10"
+              >
+                <Palette className="w-4 h-4 text-primary" />
+                Switch to {theme === "gold" ? "Cyber" : "Gold"} Theme
+              </button>
               <a
                 href="https://forms.gle/dGaYdC3mgWtxiBAr8"
                 target="_blank"
