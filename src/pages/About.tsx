@@ -241,7 +241,7 @@ export default function About() {
                   <img
                     src={founderImage}
                     alt="B. Deepak - Founder of Dominova"
-                    className="w-full h-full object-cover object-top"
+                    className="w-full h-full object-cover object-[center_15%]"
                     loading="lazy"
                   />
                 </motion.div>
