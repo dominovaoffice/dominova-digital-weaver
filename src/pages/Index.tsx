@@ -377,8 +377,6 @@ export default function Index() {
       {/* Why Choose Dominova Internship */}
       <InternshipConversion />
 
-      {/* Student Testimonials */}
-      <TestimonialCarousel />
 
       {/* CTA Section */}
       <section className="py-20 lg:py-28 bg-card">
