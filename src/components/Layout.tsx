@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FloatingApplyButton } from "@/components/FloatingApplyButton";
+import { FloatingInstagramButton } from "@/components/FloatingInstagramButton";
 import { ScrollProgressBar } from "@/components/ScrollProgressBar";
 import { ApplyButton } from "@/components/ApplyButton";
 
