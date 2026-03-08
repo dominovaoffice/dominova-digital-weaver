@@ -1,4 +1,5 @@
 import { useEffect, useRef, useCallback } from "react";
+import { useTheme } from "@/contexts/ThemeContext";
 
 interface Particle {
   x: number;
@@ -9,11 +10,30 @@ interface Particle {
   opacity: number;
 }
 
+// Theme-aware particle colors
+const THEME_COLORS: Record<string, { r: number; g: number; b: number }> = {
+  gold: { r: 201, g: 162, b: 77 },
+  cyber: { r: 0, g: 200, b: 220 },
+  "neon-pink": { r: 230, g: 60, b: 150 },
+  mint: { r: 50, g: 200, b: 150 },
+  ember: { r: 230, g: 130, b: 50 },
+  electric: { r: 50, g: 130, b: 255 },
+  violet: { r: 160, g: 90, b: 230 },
+  lime: { r: 160, g: 220, b: 50 },
+  teal: { r: 50, g: 210, b: 200 },
+  indigo: { r: 200, g: 80, b: 200 },
+  "purple-electric": { r: 160, g: 60, b: 255 },
+  steel: { r: 80, g: 180, b: 230 },
+  forest: { r: 50, g: 190, b: 100 },
+  cosmic: { r: 130, g: 90, b: 255 },
+};
+
 export function ParticlesBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const mouseRef = useRef({ x: -1000, y: -1000 });
   const animRef = useRef<number>(0);
+  const { theme } = useTheme();
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
   const PARTICLE_COUNT = isMobile ? 25 : 60;
@@ -35,6 +55,8 @@ export function ParticlesBackground() {
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+
+    const color = THEME_COLORS[theme] || THEME_COLORS.gold;
 
     const resize = () => {
       canvas.width = canvas.offsetWidth;
@@ -61,7 +83,6 @@ export function ParticlesBackground() {
         if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
         if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
 
-        // Mouse interaction (desktop only)
         if (!isMobile) {
           const dx = mouse.x - p.x;
           const dy = mouse.y - p.y;
@@ -74,11 +95,10 @@ export function ParticlesBackground() {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(201, 162, 77, ${p.opacity})`;
+        ctx.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, ${p.opacity})`;
         ctx.fill();
       }
 
-      // Connection lines
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
@@ -88,7 +108,7 @@ export function ParticlesBackground() {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(201, 162, 77, ${0.08 * (1 - dist / CONNECTION_DIST)})`;
+            ctx.strokeStyle = `rgba(${color.r}, ${color.g}, ${color.b}, ${0.08 * (1 - dist / CONNECTION_DIST)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -104,7 +124,7 @@ export function ParticlesBackground() {
       window.removeEventListener("resize", resize);
       if (!isMobile) window.removeEventListener("mousemove", onMouse);
     };
-  }, [initParticles, isMobile, CONNECTION_DIST]);
+  }, [initParticles, isMobile, CONNECTION_DIST, theme]);
 
   return (
     <canvas

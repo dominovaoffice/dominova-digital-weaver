@@ -7,7 +7,10 @@ import { ApplyButton } from "@/components/ApplyButton";
 import { TiltCard } from "@/components/TiltCard";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { ParticlesBackground } from "@/components/ParticlesBackground";
+import { FloatingShapes } from "@/components/FloatingShapes";
 import { SectionHeader } from "@/components/SectionHeader";
+import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
+import { MagneticHover } from "@/components/MagneticHover";
 import {
   Globe,
   Smartphone,
@@ -89,6 +92,7 @@ export default function Index() {
           <div className="absolute bottom-0 -left-1/4 w-[600px] h-[600px] rounded-full bg-primary/3 blur-3xl" />
         </motion.div>
         <ParticlesBackground />
+        <FloatingShapes variant="hero" />
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
@@ -129,22 +133,26 @@ export default function Index() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="flex flex-col sm:flex-row items-center justify-center gap-4"
             >
-              <Link to="/services">
-                <Button variant="hero" size="xl">
-                  Explore Our Services
-                  <ArrowRight className="w-5 h-5" />
-                </Button>
-              </Link>
-              <a
-                href="https://dominova-portfolio-showcase.vercel.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button variant="hero-outline" size="xl">
-                  View Portfolio
-                  <ExternalLink className="w-5 h-5" />
-                </Button>
-              </a>
+              <MagneticHover strength={0.15}>
+                <Link to="/services">
+                  <Button variant="hero" size="xl">
+                    Explore Our Services
+                    <ArrowRight className="w-5 h-5" />
+                  </Button>
+                </Link>
+              </MagneticHover>
+              <MagneticHover strength={0.15}>
+                <a
+                  href="https://dominova-portfolio-showcase.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button variant="hero-outline" size="xl">
+                    View Portfolio
+                    <ExternalLink className="w-5 h-5" />
+                  </Button>
+                </a>
+              </MagneticHover>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -177,63 +185,56 @@ export default function Index() {
       {/* Stats Section */}
       <section className="py-16 lg:py-20 border-b border-border">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center"
-              >
-                 <AnimatedCounter
+          <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-8" staggerDelay={0.12}>
+            {stats.map((stat) => (
+              <StaggerItem key={stat.label} direction="up">
+                <div className="text-center">
+                  <AnimatedCounter
                     value={stat.value}
                     className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-gradient-gold mb-2 inline-block"
                   />
-                <div className="text-muted-foreground text-sm lg:text-base">{stat.label}</div>
-              </motion.div>
+                  <div className="text-muted-foreground text-sm lg:text-base">{stat.label}</div>
+                </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="py-20 lg:py-28">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-20 lg:py-28 relative">
+        <FloatingShapes variant="section" />
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <SectionHeader
             badge="Our Services"
             title="Technology Solutions for Every Need"
             description="From custom software development to cloud deployment, we provide end-to-end IT services tailored to your business requirements."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {services.map((service, index) => (
-              <TiltCard
-                key={service.title}
-                icon={service.icon}
-                title={service.title}
-                description={service.description}
-                delay={index * 0.1}
-              />
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" staggerDelay={0.1}>
+            {services.map((service) => (
+              <StaggerItem key={service.title} direction="up">
+                <TiltCard
+                  icon={service.icon}
+                  title={service.title}
+                  description={service.description}
+                  delay={0}
+                />
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-center mt-12 flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <Link to="/services">
-              <Button variant="outline" size="lg">
-                View All Services
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-            </Link>
-            <ApplyButton size="md" />
-          </motion.div>
+          <ScrollReveal direction="up" delay={0.2}>
+            <div className="text-center mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link to="/services">
+                <Button variant="outline" size="lg">
+                  View All Services
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
+              <ApplyButton size="md" />
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -241,12 +242,7 @@ export default function Index() {
       <section className="py-20 lg:py-28 bg-card">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
+            <ScrollReveal direction="left">
               <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 border border-primary/20">
                 Why Dominova
               </span>
@@ -258,155 +254,149 @@ export default function Index() {
                 Our team combines startup agility with enterprise-grade expertise.
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
-                    <Users className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-display font-semibold text-foreground mb-1">Expert Team</h4>
-                    <p className="text-muted-foreground text-sm">MNC professionals guiding every project</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
-                    <Trophy className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-display font-semibold text-foreground mb-1">Quality Assured</h4>
-                    <p className="text-muted-foreground text-sm">Enterprise-grade solutions delivered</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
-                    <Rocket className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-display font-semibold text-foreground mb-1">Fast Delivery</h4>
-                    <p className="text-muted-foreground text-sm">Agile methodology for quick turnaround</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
-                    <Shield className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-display font-semibold text-foreground mb-1">Secure & Scalable</h4>
-                    <p className="text-muted-foreground text-sm">Built for growth and security</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+              <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-6" staggerDelay={0.1}>
+                {[
+                  { icon: Users, title: "Expert Team", desc: "MNC professionals guiding every project" },
+                  { icon: Trophy, title: "Quality Assured", desc: "Enterprise-grade solutions delivered" },
+                  { icon: Rocket, title: "Fast Delivery", desc: "Agile methodology for quick turnaround" },
+                  { icon: Shield, title: "Secure & Scalable", desc: "Built for growth and security" },
+                ].map((item) => (
+                  <StaggerItem key={item.title} direction="up">
+                    <div className="flex items-start gap-3 group">
+                      <MagneticHover strength={0.4}>
+                        <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20 group-hover:bg-primary/20 transition-colors">
+                          <item.icon className="w-5 h-5 text-primary" />
+                        </div>
+                      </MagneticHover>
+                      <div>
+                        <h4 className="font-display font-semibold text-foreground mb-1">{item.title}</h4>
+                        <p className="text-muted-foreground text-sm">{item.desc}</p>
+                      </div>
+                    </div>
+                  </StaggerItem>
+                ))}
+              </StaggerContainer>
+            </ScrollReveal>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative"
-            >
-              <div className="relative rounded-2xl overflow-hidden bg-secondary aspect-[4/3] border border-border">
+            <ScrollReveal direction="right">
+              <div className="relative rounded-2xl overflow-hidden bg-secondary aspect-[4/3] border border-border group">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center p-8">
-                    <Lightbulb className="w-16 h-16 text-primary mx-auto mb-4" />
+                    <motion.div
+                      whileHover={{ rotate: 15, scale: 1.1 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <Lightbulb className="w-16 h-16 text-primary mx-auto mb-4" />
+                    </motion.div>
                     <h3 className="font-display font-bold text-2xl text-foreground mb-2">Innovation First</h3>
                     <p className="text-muted-foreground">Turning ideas into impactful solutions</p>
                   </div>
                 </div>
               </div>
               <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-2xl bg-primary/15 blur-2xl" />
-            </motion.div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
       {/* Internships CTA */}
-      <section className="py-20 lg:py-28">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-card border border-border p-6 sm:p-8 lg:p-16">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-primary/5" />
-            <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-primary/10 blur-3xl" />
+      <section className="py-20 lg:py-28 relative">
+        <FloatingShapes variant="section" />
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          <ScrollReveal direction="scale">
+            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-card border border-border p-6 sm:p-8 lg:p-16">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-primary/5" />
+              <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-primary/10 blur-3xl" />
 
-            <div className="relative grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-              <div>
-                <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 border border-primary/20">
-                  Career Development
-                </span>
-                <h2 className="font-display font-bold text-3xl lg:text-4xl text-foreground mb-4">
-                  Industry-Oriented Internships & Training
-                </h2>
-                <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                  Bridge the gap between academics and industry with our placement-oriented programs. 
-                  Learn from working professionals and gain real-world project experience.
-                </p>
+              <div className="relative grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+                <div>
+                  <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 border border-primary/20">
+                    Career Development
+                  </span>
+                  <h2 className="font-display font-bold text-3xl lg:text-4xl text-foreground mb-4">
+                    Industry-Oriented Internships & Training
+                  </h2>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+                    Bridge the gap between academics and industry with our placement-oriented programs. 
+                    Learn from working professionals and gain real-world project experience.
+                  </p>
 
-                <ul className="space-y-3 mb-8">
-                  {features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-3 text-foreground">
-                      <CheckCircle className="w-5 h-5 text-primary shrink-0" />
-                      <span>{feature}</span>
-                    </li>
+                  <ul className="space-y-3 mb-8">
+                    {features.map((feature, i) => (
+                      <motion.li
+                        key={feature}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: i * 0.1 }}
+                        className="flex items-center gap-3 text-foreground"
+                      >
+                        <CheckCircle className="w-5 h-5 text-primary shrink-0" />
+                        <span>{feature}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+
+                  <MagneticHover strength={0.15}>
+                    <Link to="/internships">
+                      <Button variant="hero" size="lg">
+                        Explore Internship Programs
+                        <ArrowRight className="w-4 h-4" />
+                      </Button>
+                    </Link>
+                  </MagneticHover>
+                </div>
+
+                <StaggerContainer className="grid grid-cols-2 gap-4" staggerDelay={0.1}>
+                  {["Web Development", "Data Science", "UI/UX Design", "Cybersecurity"].map((domain) => (
+                    <StaggerItem key={domain} direction="scale">
+                      <motion.div
+                        whileHover={{ scale: 1.05, y: -4 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                        className="p-4 rounded-xl bg-secondary/50 border border-border text-center hover:border-primary/30 transition-colors"
+                      >
+                        <span className="font-display font-medium text-foreground text-sm">{domain}</span>
+                      </motion.div>
+                    </StaggerItem>
                   ))}
-                </ul>
-
-                <Link to="/internships">
-                  <Button variant="hero" size="lg">
-                    Explore Internship Programs
-                    <ArrowRight className="w-4 h-4" />
-                  </Button>
-                </Link>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                {["Web Development", "Data Science", "UI/UX Design", "Cybersecurity"].map((domain, index) => (
-                  <motion.div
-                    key={domain}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                    className="p-4 rounded-xl bg-secondary/50 border border-border text-center hover:border-primary/30 transition-colors"
-                  >
-                    <span className="font-display font-medium text-foreground text-sm">{domain}</span>
-                  </motion.div>
-                ))}
+                </StaggerContainer>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="py-20 lg:py-28 bg-card">
         <div className="container mx-auto px-4 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="max-w-3xl mx-auto"
-          >
-            <h2 className="font-display font-bold text-3xl lg:text-4xl text-foreground mb-4">
-              Ready to Transform Your Business?
-            </h2>
-            <p className="text-muted-foreground text-lg mb-8">
-              Let's discuss how Dominova can help you achieve your technology goals. 
-              Get a free consultation with our experts.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link to="/contact">
-                <Button variant="hero" size="xl">
-                  Get a Free Consultation
-                </Button>
-              </Link>
-              <Link to="/about">
-                <Button variant="hero-outline" size="xl">
-                  Learn More About Us
-                </Button>
-              </Link>
+          <ScrollReveal direction="up">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="font-display font-bold text-3xl lg:text-4xl text-foreground mb-4">
+                Ready to Transform Your Business?
+              </h2>
+              <p className="text-muted-foreground text-lg mb-8">
+                Let's discuss how Dominova can help you achieve your technology goals. 
+                Get a free consultation with our experts.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <MagneticHover strength={0.15}>
+                  <Link to="/contact">
+                    <Button variant="hero" size="xl">
+                      Get a Free Consultation
+                    </Button>
+                  </Link>
+                </MagneticHover>
+                <MagneticHover strength={0.15}>
+                  <Link to="/about">
+                    <Button variant="hero-outline" size="xl">
+                      Learn More About Us
+                    </Button>
+                  </Link>
+                </MagneticHover>
+              </div>
             </div>
-          </motion.div>
+          </ScrollReveal>
         </div>
       </section>
     </Layout>

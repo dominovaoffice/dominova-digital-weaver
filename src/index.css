@@ -684,6 +684,17 @@
   100% { background-position: 200% center; }
 }
 
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(20);
+    opacity: 0;
+  }
+}
+
 #lovable-badge {
   display: none !important;
 }

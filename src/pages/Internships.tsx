@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { SectionHeader } from "@/components/SectionHeader";
+import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
+import { MagneticHover } from "@/components/MagneticHover";
+import { FloatingShapes } from "@/components/FloatingShapes";
 import {
   Globe,
   BarChart3,
@@ -57,6 +60,7 @@ export default function Internships() {
         <div className="absolute inset-0 bg-gradient-hero" />
         <div className="absolute inset-0 bg-gradient-glow opacity-40" />
         <div className="absolute top-1/4 -right-1/4 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl" />
+        <FloatingShapes variant="hero" />
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
@@ -91,22 +95,26 @@ export default function Internships() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="flex flex-col sm:flex-row items-center justify-center gap-4"
             >
-              <Button variant="hero" size="xl" asChild>
-                <a href="#register">
-                  Register for Internship
-                  <ArrowRight className="w-5 h-5" />
-                </a>
-              </Button>
-              <Button variant="hero-outline" size="xl" asChild>
-                <a
-                  href="https://chat.whatsapp.com/HrZmthEuLwuGH2dgt4MZLT"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                  Join Our Community
-                </a>
-              </Button>
+              <MagneticHover strength={0.15}>
+                <Button variant="hero" size="xl" asChild>
+                  <a href="#register">
+                    Register for Internship
+                    <ArrowRight className="w-5 h-5" />
+                  </a>
+                </Button>
+              </MagneticHover>
+              <MagneticHover strength={0.15}>
+                <Button variant="hero-outline" size="xl" asChild>
+                  <a
+                    href="https://chat.whatsapp.com/HrZmthEuLwuGH2dgt4MZLT"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <MessageCircle className="w-5 h-5" />
+                    Join Our Community
+                  </a>
+                </Button>
+              </MagneticHover>
             </motion.div>
           </div>
         </div>
@@ -121,54 +129,57 @@ export default function Internships() {
             description="Our internship programs are designed to provide you with the skills and experience needed to succeed in the tech industry."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            {highlights.map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-6 rounded-2xl bg-background border border-border text-center hover:border-primary/30 transition-colors"
-              >
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4 border border-primary/20">
-                  <item.icon className="w-7 h-7 text-primary" />
-                </div>
-                <h3 className="font-display font-semibold text-lg text-foreground mb-2">{item.title}</h3>
-                <p className="text-muted-foreground text-sm">{item.description}</p>
-              </motion.div>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8" staggerDelay={0.1}>
+            {highlights.map((item) => (
+              <StaggerItem key={item.title} direction="up">
+                <motion.div
+                  whileHover={{ y: -6, scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="p-6 rounded-2xl bg-background border border-border text-center hover:border-primary/30 transition-colors"
+                >
+                  <MagneticHover strength={0.4}>
+                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4 border border-primary/20">
+                      <item.icon className="w-7 h-7 text-primary" />
+                    </div>
+                  </MagneticHover>
+                  <h3 className="font-display font-semibold text-lg text-foreground mb-2">{item.title}</h3>
+                  <p className="text-muted-foreground text-sm">{item.description}</p>
+                </motion.div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Domains */}
-      <section className="py-20 lg:py-28">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-20 lg:py-28 relative">
+        <FloatingShapes variant="section" />
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <SectionHeader
             badge="Internship Domains"
             title="Choose Your Path"
             description="We offer internships across multiple technology domains. Select the one that aligns with your career goals."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {internshipDomains.map((domain, index) => (
-              <motion.div
-                key={domain.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="group p-6 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300"
-              >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors border border-primary/20">
-                  <domain.icon className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="font-display font-semibold text-lg text-foreground mb-2">{domain.title}</h3>
-                <p className="text-muted-foreground text-sm">{domain.description}</p>
-              </motion.div>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" staggerDelay={0.06}>
+            {internshipDomains.map((domain) => (
+              <StaggerItem key={domain.title} direction="up">
+                <motion.div
+                  whileHover={{ y: -6, scale: 1.03 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="group p-6 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300"
+                >
+                  <MagneticHover strength={0.4}>
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors border border-primary/20">
+                      <domain.icon className="w-6 h-6 text-primary" />
+                    </div>
+                  </MagneticHover>
+                  <h3 className="font-display font-semibold text-lg text-foreground mb-2">{domain.title}</h3>
+                  <p className="text-muted-foreground text-sm">{domain.description}</p>
+                </motion.div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
@@ -176,12 +187,7 @@ export default function Internships() {
       <section className="py-20 lg:py-28 bg-card">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
+            <ScrollReveal direction="left">
               <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 border border-primary/20">
                 What You Get
               </span>
@@ -193,35 +199,42 @@ export default function Internships() {
                 your dream job in the tech industry.
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-4" staggerDelay={0.08}>
                 {benefits.map((benefit) => (
-                  <div key={benefit} className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-primary shrink-0" />
-                    <span className="text-foreground">{benefit}</span>
-                  </div>
+                  <StaggerItem key={benefit} direction="left">
+                    <div className="flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-primary shrink-0" />
+                      <span className="text-foreground">{benefit}</span>
+                    </div>
+                  </StaggerItem>
                 ))}
-              </div>
-            </motion.div>
+              </StaggerContainer>
+            </ScrollReveal>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative"
-            >
-              <div className="relative rounded-2xl overflow-hidden bg-secondary aspect-square border border-border">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center p-8">
-                    <Award className="w-20 h-20 text-primary mx-auto mb-4" />
-                    <h3 className="font-display font-bold text-2xl text-foreground mb-2">Industry Certified</h3>
-                    <p className="text-muted-foreground">Recognized certification upon completion</p>
+            <ScrollReveal direction="right">
+              <div className="relative">
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 200 }}
+                  className="relative rounded-2xl overflow-hidden bg-secondary aspect-square border border-border"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center p-8">
+                      <motion.div
+                        whileHover={{ rotate: 15, scale: 1.1 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        <Award className="w-20 h-20 text-primary mx-auto mb-4" />
+                      </motion.div>
+                      <h3 className="font-display font-bold text-2xl text-foreground mb-2">Industry Certified</h3>
+                      <p className="text-muted-foreground">Recognized certification upon completion</p>
+                    </div>
                   </div>
-                </div>
+                </motion.div>
+                <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-2xl bg-primary/15 blur-2xl" />
               </div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-2xl bg-primary/15 blur-2xl" />
-            </motion.div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -229,17 +242,12 @@ export default function Internships() {
       {/* Registration CTA */}
       <section id="register" className="py-20 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="relative rounded-3xl overflow-hidden bg-card border border-border p-8 lg:p-16 text-center">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-primary/5" />
-            <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-primary/10 blur-3xl" />
+          <ScrollReveal direction="scale">
+            <div className="relative rounded-3xl overflow-hidden bg-card border border-border p-8 lg:p-16 text-center">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-primary/5" />
+              <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-primary/10 blur-3xl" />
 
-            <div className="relative max-w-2xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
+              <div className="relative max-w-2xl mx-auto">
                 <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 border border-primary/20">
                   Start Your Journey
                 </span>
@@ -254,12 +262,14 @@ export default function Internships() {
                   For internship confirmation and updates, connect with us on our official Instagram handle.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                  <Link to="/contact">
-                    <Button variant="hero" size="xl">
-                      Register for Internship
-                      <ArrowRight className="w-5 h-5" />
-                    </Button>
-                  </Link>
+                  <MagneticHover strength={0.15}>
+                    <Link to="/contact">
+                      <Button variant="hero" size="xl">
+                        Register for Internship
+                        <ArrowRight className="w-5 h-5" />
+                      </Button>
+                    </Link>
+                  </MagneticHover>
                   <Button variant="hero-outline" size="xl" asChild>
                     <a
                       href="https://www.instagram.com/dominova_chennai_?igsh=a3lvMTJocHQ4ZGk5"
@@ -281,9 +291,9 @@ export default function Internships() {
                     </a>
                   </Button>
                 </div>
-              </motion.div>
+              </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
     </Layout>

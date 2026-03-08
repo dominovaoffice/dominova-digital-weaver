@@ -4,6 +4,9 @@ import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { SectionHeader } from "@/components/SectionHeader";
+import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
+import { MagneticHover } from "@/components/MagneticHover";
+import { FloatingShapes } from "@/components/FloatingShapes";
 import founderImage from "@/assets/founder.jpg";
 import {
   Target,
@@ -54,6 +57,7 @@ export default function About() {
       <section className="py-20 lg:py-28 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-hero" />
         <div className="absolute inset-0 bg-gradient-glow opacity-40" />
+        <FloatingShapes variant="hero" />
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
@@ -90,12 +94,7 @@ export default function About() {
       <section className="py-20 lg:py-28">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
+            <ScrollReveal direction="left">
               <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 border border-primary/20">
                 Our Story
               </span>
@@ -120,76 +119,68 @@ export default function About() {
                   to successful tech careers.
                 </p>
               </div>
-            </motion.div>
+            </ScrollReveal>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="grid grid-cols-2 gap-4"
-            >
-              {milestones.map((milestone, index) => (
-                <motion.div
-                  key={milestone.label}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="p-6 rounded-2xl bg-card border border-border text-center hover:border-primary/30 transition-colors"
-                >
-                  <milestone.icon className="w-8 h-8 text-primary mx-auto mb-3" />
-                  <AnimatedCounter
-                    value={milestone.value}
-                    className="font-display font-bold text-2xl text-gradient-gold mb-1 inline-block"
-                  />
-                  <p className="text-muted-foreground text-sm">{milestone.label}</p>
-                </motion.div>
+            <StaggerContainer className="grid grid-cols-2 gap-4" staggerDelay={0.12}>
+              {milestones.map((milestone) => (
+                <StaggerItem key={milestone.label} direction="scale">
+                  <motion.div
+                    whileHover={{ scale: 1.05, y: -4 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    className="p-6 rounded-2xl bg-card border border-border text-center hover:border-primary/30 transition-colors"
+                  >
+                    <MagneticHover strength={0.4}>
+                      <milestone.icon className="w-8 h-8 text-primary mx-auto mb-3" />
+                    </MagneticHover>
+                    <AnimatedCounter
+                      value={milestone.value}
+                      className="font-display font-bold text-2xl text-gradient-gold mb-1 inline-block"
+                    />
+                    <p className="text-muted-foreground text-sm">{milestone.label}</p>
+                  </motion.div>
+                </StaggerItem>
               ))}
-            </motion.div>
+            </StaggerContainer>
           </div>
         </div>
       </section>
 
       {/* Vision & Mission */}
-      <section className="py-20 lg:py-28 bg-card">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-20 lg:py-28 bg-card relative">
+        <FloatingShapes variant="section" />
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="p-8 lg:p-10 rounded-2xl bg-background border border-border"
-            >
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 border border-primary/20">
-                <Eye className="w-7 h-7 text-primary" />
+            <ScrollReveal direction="left" delay={0}>
+              <div className="p-8 lg:p-10 rounded-2xl bg-background border border-border group hover:border-primary/30 transition-colors">
+                <MagneticHover strength={0.3}>
+                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 border border-primary/20 group-hover:bg-primary/20 transition-colors">
+                    <Eye className="w-7 h-7 text-primary" />
+                  </div>
+                </MagneticHover>
+                <h3 className="font-display font-bold text-2xl text-foreground mb-4">Our Vision</h3>
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  To become a leading technology partner for businesses across India, known for 
+                  innovation, quality, and our commitment to developing tech talent. We envision 
+                  a future where technology empowers every business to achieve its full potential.
+                </p>
               </div>
-              <h3 className="font-display font-bold text-2xl text-foreground mb-4">Our Vision</h3>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                To become a leading technology partner for businesses across India, known for 
-                innovation, quality, and our commitment to developing tech talent. We envision 
-                a future where technology empowers every business to achieve its full potential.
-              </p>
-            </motion.div>
+            </ScrollReveal>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="p-8 lg:p-10 rounded-2xl bg-background border border-border"
-            >
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 border border-primary/20">
-                <Target className="w-7 h-7 text-primary" />
+            <ScrollReveal direction="right" delay={0.1}>
+              <div className="p-8 lg:p-10 rounded-2xl bg-background border border-border group hover:border-primary/30 transition-colors">
+                <MagneticHover strength={0.3}>
+                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 border border-primary/20 group-hover:bg-primary/20 transition-colors">
+                    <Target className="w-7 h-7 text-primary" />
+                  </div>
+                </MagneticHover>
+                <h3 className="font-display font-bold text-2xl text-foreground mb-4">Our Mission</h3>
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  To deliver innovative, scalable, and reliable technology solutions that drive 
+                  business growth. We are committed to fostering talent through industry-oriented 
+                  training and creating opportunities for students to build successful tech careers.
+                </p>
               </div>
-              <h3 className="font-display font-bold text-2xl text-foreground mb-4">Our Mission</h3>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                To deliver innovative, scalable, and reliable technology solutions that drive 
-                business growth. We are committed to fostering talent through industry-oriented 
-                training and creating opportunities for students to build successful tech careers.
-              </p>
-            </motion.div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -203,24 +194,25 @@ export default function About() {
             description="Our core values guide everything we do, from how we work with clients to how we develop our team."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            {values.map((value, index) => (
-              <motion.div
-                key={value.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-6 rounded-2xl bg-card border border-border text-center hover:border-primary/30 transition-colors"
-              >
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4 border border-primary/20">
-                  <value.icon className="w-7 h-7 text-primary" />
-                </div>
-                <h3 className="font-display font-semibold text-lg text-foreground mb-2">{value.title}</h3>
-                <p className="text-muted-foreground text-sm">{value.description}</p>
-              </motion.div>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8" staggerDelay={0.1}>
+            {values.map((value) => (
+              <StaggerItem key={value.title} direction="up">
+                <motion.div
+                  whileHover={{ y: -6, scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="p-6 rounded-2xl bg-card border border-border text-center hover:border-primary/30 transition-colors"
+                >
+                  <MagneticHover strength={0.4}>
+                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4 border border-primary/20">
+                      <value.icon className="w-7 h-7 text-primary" />
+                    </div>
+                  </MagneticHover>
+                  <h3 className="font-display font-semibold text-lg text-foreground mb-2">{value.title}</h3>
+                  <p className="text-muted-foreground text-sm">{value.description}</p>
+                </motion.div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
@@ -228,60 +220,52 @@ export default function About() {
       <section className="py-20 lg:py-28 bg-card">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="text-center mb-12"
-            >
-              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 border border-primary/20">
-                Leadership
-              </span>
-              <h2 className="font-display font-bold text-3xl lg:text-4xl text-foreground">
-                Meet Our Founder
-              </h2>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 p-8 lg:p-10 rounded-2xl bg-background border border-border"
-            >
-              <motion.div
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.3 }}
-                className="w-32 h-32 lg:w-40 lg:h-40 rounded-2xl overflow-hidden shrink-0 border border-border"
-              >
-                <img
-                  src={founderImage}
-                  alt="B. Deepak - Founder of Dominova"
-                  className="w-full h-full object-cover object-top"
-                  loading="lazy"
-                />
-              </motion.div>
-
-              <div className="text-center lg:text-left">
-                <h3 className="font-display font-bold text-2xl text-foreground mb-2">B. Deepak</h3>
-                <p className="text-primary font-medium mb-4">Founder</p>
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  A passionate technologist with a vision to transform how businesses leverage technology. 
-                  Deepak founded Dominova with the goal of creating impactful solutions while nurturing 
-                  the next generation of tech professionals in Chennai.
-                </p>
-                <a
-                  href="https://www.linkedin.com/in/deepak-b-34734b279"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
-                >
-                  <Linkedin className="w-5 h-5" />
-                  <span className="font-medium">Connect on LinkedIn</span>
-                </a>
+            <ScrollReveal direction="up">
+              <div className="text-center mb-12">
+                <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 border border-primary/20">
+                  Leadership
+                </span>
+                <h2 className="font-display font-bold text-3xl lg:text-4xl text-foreground">
+                  Meet Our Founder
+                </h2>
               </div>
-            </motion.div>
+            </ScrollReveal>
+
+            <ScrollReveal direction="scale" delay={0.1}>
+              <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 p-8 lg:p-10 rounded-2xl bg-background border border-border group hover:border-primary/30 transition-colors">
+                <motion.div
+                  whileHover={{ y: -4, scale: 1.03 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="w-32 h-32 lg:w-40 lg:h-40 rounded-2xl overflow-hidden shrink-0 border border-border"
+                >
+                  <img
+                    src={founderImage}
+                    alt="B. Deepak - Founder of Dominova"
+                    className="w-full h-full object-cover object-top"
+                    loading="lazy"
+                  />
+                </motion.div>
+
+                <div className="text-center lg:text-left">
+                  <h3 className="font-display font-bold text-2xl text-foreground mb-2">B. Deepak</h3>
+                  <p className="text-primary font-medium mb-4">Founder</p>
+                  <p className="text-muted-foreground leading-relaxed mb-4">
+                    A passionate technologist with a vision to transform how businesses leverage technology. 
+                    Deepak founded Dominova with the goal of creating impactful solutions while nurturing 
+                    the next generation of tech professionals in Chennai.
+                  </p>
+                  <a
+                    href="https://www.linkedin.com/in/deepak-b-34734b279"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
+                  >
+                    <Linkedin className="w-5 h-5" />
+                    <span className="font-medium">Connect on LinkedIn</span>
+                  </a>
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -295,17 +279,21 @@ export default function About() {
             description="Whether you need technology solutions for your business or want to join our internship program, we'd love to hear from you."
           />
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/contact">
-              <Button variant="hero" size="xl">
-                Contact Our Team
-                <ArrowRight className="w-5 h-5" />
-              </Button>
-            </Link>
-            <Link to="/services">
-              <Button variant="hero-outline" size="xl">
-                Explore Our Services
-              </Button>
-            </Link>
+            <MagneticHover strength={0.15}>
+              <Link to="/contact">
+                <Button variant="hero" size="xl">
+                  Contact Our Team
+                  <ArrowRight className="w-5 h-5" />
+                </Button>
+              </Link>
+            </MagneticHover>
+            <MagneticHover strength={0.15}>
+              <Link to="/services">
+                <Button variant="hero-outline" size="xl">
+                  Explore Our Services
+                </Button>
+              </Link>
+            </MagneticHover>
           </div>
         </div>
       </section>
