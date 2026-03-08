@@ -184,7 +184,6 @@ export default function Index() {
                     value={stat.value}
                     className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-gradient-gold mb-2 inline-block"
                   />
-                />
                 <div className="text-muted-foreground text-sm lg:text-base">{stat.label}</div>
               </motion.div>
             ))}
