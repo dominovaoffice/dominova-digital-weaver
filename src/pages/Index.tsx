@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
+import { useMouseParallax } from "@/hooks/useMouseParallax";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { ApplyButton } from "@/components/ApplyButton";
