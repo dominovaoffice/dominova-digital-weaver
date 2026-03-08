@@ -20,7 +20,7 @@ export function FloatingInstagramButton() {
       }}
       whileHover={{ scale: 1.15 }}
       whileTap={{ scale: 0.95 }}
-      className="fixed bottom-24 md:bottom-20 right-4 md:right-6 z-50 w-12 h-12 rounded-full
+      className="fixed bottom-20 md:bottom-6 right-4 md:right-6 z-50 w-12 h-12 rounded-full
         bg-gradient-to-br from-[hsl(340,75%,55%)] via-[hsl(15,85%,55%)] to-[hsl(45,90%,55%)]
         flex items-center justify-center text-white
         shadow-[0_4px_20px_rgba(225,48,108,0.4)]
