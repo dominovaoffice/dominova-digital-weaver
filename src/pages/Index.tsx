@@ -80,6 +80,7 @@ export default function Index() {
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const mouse = useMouseParallax(0.03);
 
   return (
     <Layout>
