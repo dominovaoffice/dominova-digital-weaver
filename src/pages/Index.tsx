@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
+import { useMouseParallax } from "@/hooks/useMouseParallax";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { ApplyButton } from "@/components/ApplyButton";
@@ -79,6 +80,7 @@ export default function Index() {
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const mouse = useMouseParallax(0.03);
 
   return (
     <Layout>
@@ -95,7 +97,10 @@ export default function Index() {
         <FloatingShapes variant="hero" />
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            style={{ x: mouse.x, y: mouse.y }}
+            className="max-w-4xl mx-auto text-center will-change-transform"
+          >
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -162,7 +167,7 @@ export default function Index() {
             >
               <ApplyButton size="lg" />
             </motion.div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Scroll indicator */}
