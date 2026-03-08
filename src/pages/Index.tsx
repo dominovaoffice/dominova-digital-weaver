@@ -97,7 +97,10 @@ export default function Index() {
         <FloatingShapes variant="hero" />
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            style={{ x: mouse.x, y: mouse.y }}
+            className="max-w-4xl mx-auto text-center will-change-transform"
+          >
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
