@@ -191,15 +191,26 @@ export default function Services() {
                       transition={{ type: "spring", stiffness: 300, damping: 20 }}
                       className="relative rounded-2xl overflow-hidden bg-card border border-border aspect-[4/3] hover:border-primary/30 transition-colors"
                     >
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <motion.div
-                          whileHover={{ rotate: 10, scale: 1.1 }}
-                          transition={{ type: "spring", stiffness: 200 }}
-                        >
-                          <service.icon className="w-24 h-24 text-primary/30" />
-                        </motion.div>
-                      </div>
+                      {service.image ? (
+                        <img
+                          src={service.image}
+                          alt={service.title}
+                          className="absolute inset-0 w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <>
+                          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <motion.div
+                              whileHover={{ rotate: 10, scale: 1.1 }}
+                              transition={{ type: "spring", stiffness: 200 }}
+                            >
+                              <service.icon className="w-24 h-24 text-primary/30" />
+                            </motion.div>
+                          </div>
+                        </>
+                      )}
                     </motion.div>
                     <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-2xl bg-primary/20 blur-2xl" />
                   </div>
