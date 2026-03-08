@@ -34,12 +34,14 @@ const allServices = [
     title: "Web Development",
     description: "Custom websites and web applications built with modern frameworks like React, Next.js, and Node.js. We create responsive, fast, and SEO-optimized solutions.",
     features: ["Custom Web Applications", "E-commerce Platforms", "Progressive Web Apps", "CMS Development"],
+    image: serviceWebImg,
   },
   {
     icon: Smartphone,
     title: "Mobile App Development",
     description: "Native and cross-platform mobile applications for iOS and Android. We use React Native and Flutter to deliver seamless mobile experiences.",
     features: ["iOS & Android Apps", "Cross-Platform Development", "App Store Optimization", "Maintenance & Support"],
+    image: serviceMobileImg,
   },
   {
     icon: Code,
@@ -94,6 +96,7 @@ const allServices = [
     title: "Workshops & Technical Events",
     description: "Engaging workshops and technical events for colleges and industry professionals including bootcamps and hands-on sessions.",
     features: ["College Workshops", "Industry Sessions", "Technical Bootcamps", "Hands-on Training"],
+    image: serviceWorkshopImg,
   },
 ];
 
