@@ -73,16 +73,22 @@ const features = [
 ];
 
 export default function Index() {
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] lg:min-h-[90vh] flex items-center overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 bg-gradient-hero" />
-        <div className="absolute inset-0 bg-gradient-glow opacity-60" />
+      <section ref={heroRef} className="relative min-h-[85vh] lg:min-h-[90vh] flex items-center overflow-hidden">
+        {/* Parallax Background */}
+        <motion.div style={{ y: heroY }} className="absolute inset-0 will-change-transform">
+          <div className="absolute inset-0 bg-gradient-hero" />
+          <div className="absolute inset-0 bg-gradient-glow opacity-60" />
+          <div className="absolute top-1/4 -right-1/4 w-[800px] h-[800px] rounded-full bg-primary/5 blur-3xl" />
+          <div className="absolute bottom-0 -left-1/4 w-[600px] h-[600px] rounded-full bg-primary/3 blur-3xl" />
+        </motion.div>
         <ParticlesBackground />
-        <div className="absolute top-1/4 -right-1/4 w-[800px] h-[800px] rounded-full bg-primary/5 blur-3xl" />
-        <div className="absolute bottom-0 -left-1/4 w-[600px] h-[600px] rounded-full bg-primary/3 blur-3xl" />
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
