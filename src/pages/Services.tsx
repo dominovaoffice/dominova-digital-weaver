@@ -48,6 +48,7 @@ const allServices = [
     title: "Custom Software Solutions",
     description: "Tailored software solutions designed to automate processes, improve efficiency, and solve unique business challenges.",
     features: ["Enterprise Software", "API Development", "System Integration", "Legacy Modernization"],
+    image: serviceInternshipImg,
   },
   {
     icon: Palette,
