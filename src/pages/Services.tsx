@@ -4,6 +4,10 @@ import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { ApplyButton } from "@/components/ApplyButton";
 import { SectionHeader } from "@/components/SectionHeader";
+import serviceWebImg from "@/assets/service-web.png";
+import serviceMobileImg from "@/assets/service-mobile.png";
+import serviceInternshipImg from "@/assets/service-internship.png";
+import serviceWorkshopImg from "@/assets/service-workshop.png";
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
 import { MagneticHover } from "@/components/MagneticHover";
 import { FloatingShapes } from "@/components/FloatingShapes";
@@ -30,18 +34,21 @@ const allServices = [
     title: "Web Development",
     description: "Custom websites and web applications built with modern frameworks like React, Next.js, and Node.js. We create responsive, fast, and SEO-optimized solutions.",
     features: ["Custom Web Applications", "E-commerce Platforms", "Progressive Web Apps", "CMS Development"],
+    image: serviceWebImg,
   },
   {
     icon: Smartphone,
     title: "Mobile App Development",
     description: "Native and cross-platform mobile applications for iOS and Android. We use React Native and Flutter to deliver seamless mobile experiences.",
     features: ["iOS & Android Apps", "Cross-Platform Development", "App Store Optimization", "Maintenance & Support"],
+    image: serviceMobileImg,
   },
   {
     icon: Code,
     title: "Custom Software Solutions",
     description: "Tailored software solutions designed to automate processes, improve efficiency, and solve unique business challenges.",
     features: ["Enterprise Software", "API Development", "System Integration", "Legacy Modernization"],
+    image: serviceInternshipImg,
   },
   {
     icon: Palette,
@@ -90,6 +97,7 @@ const allServices = [
     title: "Workshops & Technical Events",
     description: "Engaging workshops and technical events for colleges and industry professionals including bootcamps and hands-on sessions.",
     features: ["College Workshops", "Industry Sessions", "Technical Bootcamps", "Hands-on Training"],
+    image: serviceWorkshopImg,
   },
 ];
 
@@ -184,15 +192,26 @@ export default function Services() {
                       transition={{ type: "spring", stiffness: 300, damping: 20 }}
                       className="relative rounded-2xl overflow-hidden bg-card border border-border aspect-[4/3] hover:border-primary/30 transition-colors"
                     >
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <motion.div
-                          whileHover={{ rotate: 10, scale: 1.1 }}
-                          transition={{ type: "spring", stiffness: 200 }}
-                        >
-                          <service.icon className="w-24 h-24 text-primary/30" />
-                        </motion.div>
-                      </div>
+                      {service.image ? (
+                        <img
+                          src={service.image}
+                          alt={service.title}
+                          className="absolute inset-0 w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <>
+                          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <motion.div
+                              whileHover={{ rotate: 10, scale: 1.1 }}
+                              transition={{ type: "spring", stiffness: 200 }}
+                            >
+                              <service.icon className="w-24 h-24 text-primary/30" />
+                            </motion.div>
+                          </div>
+                        </>
+                      )}
                     </motion.div>
                     <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-2xl bg-primary/20 blur-2xl" />
                   </div>
