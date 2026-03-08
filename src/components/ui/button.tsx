@@ -3,6 +3,7 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
+import { useRipple } from "@/hooks/useRipple";
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-semibold font-display ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
@@ -41,9 +42,39 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
-    return <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />;
+  ({ className, variant, size, asChild = false, onClick, ...props }, ref) => {
+    const { ripples, createRipple } = useRipple();
+
+    if (asChild) {
+      return <Slot className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />;
+    }
+
+    return (
+      <button
+        className={cn(buttonVariants({ variant, size, className }), "relative overflow-hidden")}
+        ref={ref}
+        onClick={(e) => {
+          createRipple(e);
+          onClick?.(e);
+        }}
+        {...props}
+      >
+        {/* Ripple effects */}
+        {ripples.map((ripple) => (
+          <span
+            key={ripple.id}
+            className="absolute rounded-full bg-foreground/20 animate-[ripple_0.6s_ease-out_forwards] pointer-events-none"
+            style={{
+              left: ripple.x - 10,
+              top: ripple.y - 10,
+              width: 20,
+              height: 20,
+            }}
+          />
+        ))}
+        {props.children}
+      </button>
+    );
   },
 );
 Button.displayName = "Button";
