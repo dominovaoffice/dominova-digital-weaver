@@ -127,6 +127,14 @@ export function Navbar() {
                 </Link>
               ))}
               <button
+                onClick={toggleFlipkart}
+                className={`w-full flex items-center justify-center gap-2 h-10 rounded-lg text-sm font-display font-semibold
+                  border transition-colors ${theme === "flipkart" ? "border-primary bg-primary/20 text-primary" : "border-border bg-secondary text-foreground hover:bg-primary/10"}`}
+              >
+                <ShoppingCart className="w-4 h-4 text-primary" />
+                Flipkart Theme {theme === "flipkart" ? "(Active)" : ""}
+              </button>
+              <button
                 onClick={cycleTheme}
                 className="w-full flex items-center justify-center gap-2 h-10 rounded-lg text-sm font-display font-semibold
                   border border-border bg-secondary text-foreground hover:bg-primary/10"
