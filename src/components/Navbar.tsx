@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Rocket, Palette } from "lucide-react";
+import { Menu, X, Rocket, Palette, ShoppingCart } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import logo from "@/assets/logo.png";
 
@@ -18,7 +18,7 @@ const navLinks = [
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const { theme, cycleTheme, themeLabel } = useTheme();
+  const { theme, cycleTheme, toggleFlipkart, themeLabel } = useTheme();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-xl border-b border-border">
@@ -45,6 +45,17 @@ export function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3">
+            <motion.button
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={toggleFlipkart}
+              className={`inline-flex items-center gap-2 h-9 px-3 rounded-lg text-sm font-display font-semibold
+                border transition-colors ${theme === "flipkart" ? "border-primary bg-primary/20 text-primary" : "border-border bg-secondary text-foreground hover:bg-primary/10 hover:border-primary/50"}`}
+              aria-label="Toggle Flipkart Theme"
+            >
+              <ShoppingCart className="w-4 h-4 text-primary" />
+              <span className="hidden xl:inline">Flipkart</span>
+            </motion.button>
             <motion.button
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
@@ -115,6 +126,14 @@ export function Navbar() {
                   </Button>
                 </Link>
               ))}
+              <button
+                onClick={toggleFlipkart}
+                className={`w-full flex items-center justify-center gap-2 h-10 rounded-lg text-sm font-display font-semibold
+                  border transition-colors ${theme === "flipkart" ? "border-primary bg-primary/20 text-primary" : "border-border bg-secondary text-foreground hover:bg-primary/10"}`}
+              >
+                <ShoppingCart className="w-4 h-4 text-primary" />
+                Flipkart Theme {theme === "flipkart" ? "(Active)" : ""}
+              </button>
               <button
                 onClick={cycleTheme}
                 className="w-full flex items-center justify-center gap-2 h-10 rounded-lg text-sm font-display font-semibold
