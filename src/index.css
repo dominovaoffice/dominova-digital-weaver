@@ -613,7 +613,7 @@
   --sidebar-ring: 217 89% 56%;
 }
 
-
+@layer base {
   * {
     @apply border-border;
   }
