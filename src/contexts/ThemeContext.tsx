@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 
-const THEMES = ["gold", "cyber", "neon-pink", "mint", "ember", "electric", "violet", "lime", "teal", "indigo", "purple-electric", "steel", "forest", "cosmic"] as const;
+const THEMES = ["gold", "cyber", "neon-pink", "mint", "ember", "electric", "violet", "lime", "teal", "indigo", "purple-electric", "steel", "forest", "cosmic", "flipkart"] as const;
 export type Theme = (typeof THEMES)[number];
 
 const THEME_LABELS: Record<Theme, string> = {
@@ -18,6 +18,7 @@ const THEME_LABELS: Record<Theme, string> = {
   steel: "Steel",
   forest: "Forest",
   cosmic: "Cosmic",
+  flipkart: "Flipkart",
 };
 
 interface ThemeContextType {

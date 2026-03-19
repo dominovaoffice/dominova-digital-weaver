@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { FloatingApplyButton } from "@/components/FloatingApplyButton";
+import { FloatingPortfolioButton } from "@/components/FloatingPortfolioButton";
 import { FloatingInstagramButton } from "@/components/FloatingInstagramButton";
 import { ScrollProgressBar } from "@/components/ScrollProgressBar";
 import { PageLoader } from "@/components/PageLoader";
@@ -29,7 +29,7 @@ export function Layout({ children }: LayoutProps) {
       </section>
 
       <Footer />
-      <FloatingApplyButton />
+      <FloatingPortfolioButton />
       <FloatingInstagramButton />
     </div>
   );
