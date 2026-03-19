@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Rocket } from "lucide-react";
 import { useEffect, useState } from "react";
 
-const APPLY_URL = "https://forms.gle/dGaYdC3mgWtxiBAr8";
+const APPLY_URL = "https://forms.gle/zhufuHYQkRFnJWEv7";
 
 function trackApplyClick() {
   try {
