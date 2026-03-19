@@ -124,7 +124,7 @@ export function Navbar() {
                 Change Theme: {themeLabel}
               </button>
               <a
-                href="https://forms.gle/dGaYdC3mgWtxiBAr8"
+                href="https://forms.gle/zhufuHYQkRFnJWEv7"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}
