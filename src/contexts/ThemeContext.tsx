@@ -52,8 +52,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       return THEMES[(idx + 1) % THEMES.length];
     });
 
+  const toggleFlipkart = () =>
+    setTheme((t) => (t === "flipkart" ? "gold" : "flipkart"));
+
   return (
-    <ThemeContext.Provider value={{ theme, cycleTheme, themeLabel: THEME_LABELS[theme] }}>
+    <ThemeContext.Provider value={{ theme, cycleTheme, toggleFlipkart, themeLabel: THEME_LABELS[theme] }}>
       {children}
     </ThemeContext.Provider>
   );
