@@ -24,12 +24,14 @@ const THEME_LABELS: Record<Theme, string> = {
 interface ThemeContextType {
   theme: Theme;
   cycleTheme: () => void;
+  toggleFlipkart: () => void;
   themeLabel: string;
 }
 
 const ThemeContext = createContext<ThemeContextType>({
   theme: "gold",
   cycleTheme: () => {},
+  toggleFlipkart: () => {},
   themeLabel: "Gold",
 });
 
