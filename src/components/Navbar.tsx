@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Rocket, Palette } from "lucide-react";
+import { Menu, X, Rocket, Palette, ShoppingCart } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import logo from "@/assets/logo.png";
 
